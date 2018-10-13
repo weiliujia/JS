@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background: #f083da;
+            padding: 10px;
+            margin: 10px;
+            border: 10px solid #59e655;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    /*
+    *
+    * client 系列
+    * clientWidth：盒子真是内容的宽度【content+padding左右】，不包括边线【border】和滚动条
+    * clientHeight：盒子真是内容的宽度【content+padding上下】，不包括边线【border】和滚动条
+    * clientLeft；盒子左边框的宽度【border-left】
+    * clientTop；盒子上边框的宽度【border-top】
+    * 一般情况下我们用这个属性表示可是窗口的宽高，也可以用来表元素的宽高
+    * */
+    var box = document.getElementById('box');
+    /*
+     * 获得当前浏览器可视窗口的宽度和高度
+     * document.documentElement.clientWidth => html
+     * document.body.clientWidth => body
+     * 一般情况下，body和html元素宽高都是相等的
+     *
+     */
+    document.documentElement.clientWidth //html 元素的宽度
+    document.body.clientWidth //body 的宽度
+
+    function win(key,value) {
+        //通过判断value的值我们可以得知是否对可视窗口进行修改
+        if(value == undefined){
+            //只是对可是窗口进行修改
+            return document.documentElement[key]||document.body[key]
+        }
+        //传了参数，要对它进行设置，而且没有单位
+        document.documentElement[key]=value;
+        document.body[key]=value;
+    }
+    win('clientWidth')
+</script>

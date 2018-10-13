@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    /*
+    *this:执行主体，
+    * 1.全局作用域下的this都是window
+    * 2.自执行函数中的this都是window
+    * 3.函数当作参数的时候，一般情况下都是window
+    * 4.函数执行看函数前面是否有 ".",如果有，那么点前面是谁就是谁，如果没有，this是window
+    * 5.元素事件函数中是this一般情况下都是 元素本身
+    * 6.构造函数当中的this都是实例本身
+    * 7.通过call、apply、bing、可以改变this；
+    */
+
+    var a=0;
+    function FF() {
+        this.a=1;
+        a++;
+        return a;
+    }
+    var f1=FF();
+    console.log(f1,a);//___2,2________
+    var f2=new FF();
+    console.log(f2());//__2_______
+    console.log(a);//_____1____
+</script>

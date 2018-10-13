@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //工厂模式:解决"批量生产"的问题  操作的是一个函数
+    function shirt() {
+        //制作衣服流程
+        //1.创建对象
+        var obj={};
+        //2.给对象添加属性和方法
+        obj.size = 'xxl';
+        obj.material = '棉';
+        obj.color = 'blue';
+        //返回对象
+        return obj;
+    }
+    for (var i = 0; i <1000; i++) {
+        shirt();
+    }
+    //工厂模式  批量获取div
+    document.querySelectorAll('div')
+</script>

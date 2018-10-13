@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    let str = 'qwertyuiopasdfghjklmnbvcxz' + 'QWERTYUIOPLKJHGFDSAZXCVBNM' + '0123456789';
+    let box = document.getElementById('box');
+        let newStr = '';
+        for (var i = 0; i < 4; i++) {
+            let index = Math.round(Math.random() * (str.length - 1) + 1 + 0);
+            if (newStr.indexOf(str[index]) == -1) {
+                newStr += str[index]
+            } else {
+                i--
+            }
+        }
+    console.log(box.innerHTML = newStr);
+</script>

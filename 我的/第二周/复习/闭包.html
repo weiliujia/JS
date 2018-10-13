@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * 闭包:
+    * 定义;闭包是一种保护机制，保护私有变量不受外界的干扰
+    * 保护：闭包是为了保护私有作用域中的私有变量不受全局变量的污染
+    * 保存：当前作用于下的引用数据类型被外界的变量或者对象所占有，导致当前作用域变成一个不销毁的作用域，当前作用域下的私有变量就变成不销毁的变量，就被保存下来了
+    *
+    * */
+
+    (function () {
+        var a=0;
+        function f() {
+            console.log(a++);
+        }
+        window.f=f;
+    })();
+    f();
+    f();
+    f();
+
+</script>

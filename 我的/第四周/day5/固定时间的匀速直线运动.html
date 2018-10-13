@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background: rebeccapurple;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    /*
+     *匀速直线运动
+     *
+     *time:所花费的时间
+     * duration：总时间
+     * change：终点-开始的位置=>要走的距离
+     * begin：开始的位置
+     * */
+    function liner(time, duration, change, begin) {
+        return time / duration * change + begin
+    }
+    let time = 0, duration = 200000, begin = utils.css(box, 'left');
+    let target = utils.win('clientWidth') - box.offsetWidth;
+    box.onclick = function () {
+        this.timer = setInterval(() => {
+            time += 17;
+            if (time >= duration) {
+                clearInterval(this.timer);
+                utils.css(this, 'left', target);
+                return
+            }
+            utils.css(this, 'left', liner(time, duration, target - begin, begin))
+        }, 17)
+    }
+</script>

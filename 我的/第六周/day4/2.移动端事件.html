@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>
+<script src="zepto.js"></script>
+<script>
+    //单指移动时  touchatart touchmove touchend
+    //点击事件 click 300ms毫秒延迟问题
+    //符合事件 swipeLeft  swipeRight swipe swipeUp swipeDown singleTap
+    //zepto 用法跟jquery一样
+    
+    $('#div1').swipeRight(function () {
+
+    })
+</script>

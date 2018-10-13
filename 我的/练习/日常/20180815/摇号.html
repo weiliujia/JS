@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="licensePlate"></div>
+<button id="shakeBtn">摇号</button>
+</body>
+</html>
+<script>
+     function f(n,m) {
+       return  Math.round(Math.random()*(m-n)+n);
+    }
+     function createPlate() {
+        var str1='ABCEFGHJK',
+            str2='QWERTYUIOPASDFGHJKLZXCVBNM0123456789';
+        var index1='京'+str1[f(0,8)],
+            index2='';
+        while (index2.length<5){
+            index2 += str2[f(0,35)]
+        }
+        return index1+ '' +index2
+    }
+    console.log(createPlate());
+     var cur=0;
+     shakeBtn.onclick = function () {
+         var result=  createPlate();
+         span=document.createElement('span');
+          span.innerHTML =result;
+         licensePlate.appendChild(span);
+         cur++;
+         if(cur>=3){
+             document.body.removeChild(shakeBtn)
+         }
+     }
+</script>

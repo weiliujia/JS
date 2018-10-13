@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+            display: flex;
+            /*相对于y周水平居中*/
+            justify-content: center;
+            /*相对于x周水平居中*/
+            align-items: center;
+        }
+        #box1{
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+           /* margin-left: -50px;
+            margin-top: -50px;*/
+           /* background: lightblue;*/
+            /*相对于当前盒子移动，根据transform-origin：center,可以不知道盒子的宽高进行垂直水平居中*/
+            /**/
+            border:1px solid red;
+            transform: translate(-50%,-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #box1 p {
+            background: red;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">
+    <p>珠峰</p>
+</div>
+</body>
+</html>
+<script>
+  /*
+  * flex:弹性和模型
+  * display：flex；
+  * display：-webkit-flex
+  * 想要通过flex实现垂直水平居中，可以将flex属性设置在当前元素的父级元素上，而且flex默认是以【水平方向】进行排布
+  * */
+</script>

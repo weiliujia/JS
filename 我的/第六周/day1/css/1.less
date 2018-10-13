@@ -1,0 +1,28 @@
+/*
+#box{
+  width: 100px;
+  height: 100px;
+  background: rebeccapurple;
+  p{
+    font-size: 20px;
+  }
+}*/
+
+/*
+less中的变量是@符号
+less 中声明的变量，在作用域下有变量提升的效果
+less 中引用的图片
+*/
+@color: #2effb7;
+@img:'../img';
+@width:100px;
+@height:200px;
+#box {
+  color: @color;
+  background: url('@{img}/24.png');
+  width: @width;
+  height: @height;
+  p{
+    color: @color;
+  }
+}

@@ -1,0 +1,11 @@
+/*
+less中的继承 用extend表示
+less中导入用@import
+*/
+.pub,
+#box,
+#box {
+  width: 100px;
+  height: 100px;
+  background: red;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #box{
+        width: 200px;
+        border: 1px solid #000;
+        list-style: none;
+        margin:  50px auto;
+    }
+      #box li{
+          width: 200px;
+          height: 30px;
+          border: 1px solid #000;
+      }
+    .bg1 {
+        background: red;
+    }
+    .bg2{
+        background: #c6ff9b;
+    }
+    .bg3 {
+        background: #ff8ffb;
+    }
+    </style>
+
+</head>
+<body>
+<ul id="box">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
+<script>
+    var obox=document.getElementById('box');
+    var lis=box.getElementsByTagName('li');
+    for (var i = 0; i <lis.length; i++) {
+       if(!(i%2)){
+           lis[i].className='bg1';
+           lis[i].index='bg1';
+       }else{
+           lis[i].className='bg2';
+           lis[i].index='bg2';
+       }
+       lis[i].onmousemove = function () {
+           this.className='bg3';
+       }
+       lis[i].onmouseout = function () {
+           this.className=this.index
+       }
+        lis[i].indexx=i+1;
+        lis[i].onclick =function () {
+            alert('我是第'+this.indexx+'项')
+        }
+    }
+
+</script>

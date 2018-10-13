@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var ary = [1,2,1,2,1];
+    function replay() {
+        var obj={};
+        for (var i = 0; i < ary.length; i++) {
+            var cur = ary[i];
+            if(obj[cur]){
+                obj[cur]++
+            }else {
+                obj[cur]=1; //{1:1,2:1}
+            }
+        }return obj;
+    /*    var obj={} , newAry=[];
+            for (var key in ary) {
+                var con = ary[key];
+                obj[con] = con ;
+
+            } for (var key in newAry){
+            obj.push(key);
+        }return obj*/
+            }
+    console.log(replay(ary));
+</script>

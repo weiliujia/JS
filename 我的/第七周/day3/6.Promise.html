@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function ajax(option = {}) {
+        let {
+            url = null,
+            method = 'get',
+            async = true,
+            cache = true,
+            data = null,
+            dataType = 'json',
+            success = new Function(),
+            error = new Function,
+        } = option;
+        //判断success是否是一个函数
+        if (typeof success !== 'function') {
+            success = new Function();
+        }
+        //如果是get请求方式，需要到url地址是做拼接
+        if (Object.prototype.toString.call(data) === '[object Object]') {
+            var str = ``;
+            for (var key in data) {
+                str += `${key}=${data[key]}&`
+            }
+            str = str.slice(0, str.length - 1);
+            //str = str.replace(/&$/g,'');
+            if (method === 'get') {
+                url += "?" + str;
+            }
+        }
+        //如果cache为false的时候
+        if (cache === false && method === 'get') {
+            if (url.includes('?')) {
+                url += `&_=${Math.random()}`
+            } else {
+                url += `?_=${Math.random()}`
+            }
+        }
+        let xhr = new XMLHttpRequest();
+        return new Promise((resolve,reject)=>{
+            xhr.open(method, url, async);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (/^(2|3)\d{2}$/.test(xhr.status)) {
+                        var newData = null;
+                        if (dataType === 'json') {
+                            //将json字符串转成json对象
+                            try {
+                                newData = JSON.parse(xhr.responseText);
+                            } catch (e) {
+                                newData = xhr.responseText;
+                            }
+                        } else if (dataType === 'xml') {
+                            newData = xhr.responseXML;
+                        }
+                        resolve(newData);
+                    } else if (/^[45]\d{2}$/.test(xhr.status)) {
+                        reject(xhr.responseText);
+
+                    }
+                }
+            };
+        });
+
+
+
+
+        //如果是post发送数据，将数据放到xhr.send参数里面
+        if (method === 'post' && data instanceof Object) {
+            data=JSON.stringify(data);
+            xhr.send(data);
+            return
+        }
+        //
+
+        xhr.send(data);
+
+    }
+
+    new Promise((res,rej)=>{
+        setTimeout(()=>{
+            res(17)
+        },17)
+    });
+    console.log(1);
+    p.then((res)=>{
+        console.log(res);
+    },17);
+    console.log(2);
+
+
+</script>

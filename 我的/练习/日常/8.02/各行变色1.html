@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            width: 300px;
+            margin: 50px auto;
+            border: 1px solid red;
+
+        }
+        li{
+            width: 100%;
+            height: 30px;
+            border-bottom:1px solid green;
+        }
+        .bg{
+            background: #2bceff;
+        }
+        .bg2{
+            background: #2dda65;
+        }
+        .bg3{
+            background: #c352da;
+        }
+        /*li:nth-child(odd){*/
+            /*background: red;*/
+        /*}*/
+        /*li:nth-child(even){*/
+            /*background: greenyellow;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<ul>
+    <li ></li>
+    <li ></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
+<script>
+   var lis = document.getElementsByTagName('li');
+   for(var i=0;i<lis.length;i++){
+       if(i%2){
+           lis[i].className='bg';
+           lis[i].index = 'bg'
+       }
+       else {
+           lis[i].className='bg2';
+           lis[i].index = 'bg2'
+       }
+       lis[i].onmousemove = function () {
+           this.className = 'bg3';
+
+       }
+       lis[i].onmouseout = function () {
+           this.className = this.index
+       }
+   }
+</script>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        html, body {
+            height: 500%;
+            width: 100%;
+            background: -webkit-linear-gradient(red, orangered, yellow, green, royalblue, blue, purple);
+        }
+
+        #box {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: fixed;
+            right: 50px;
+            bottom: 50px;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+            background: rgba(0, 0, 0, .5);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="box">up</div>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    let box = document.querySelector('#box');
+    let winH = utils.win('clientHeight');
+    window.onscroll = function () {
+        let winT = utils.win('scrollTop');
+        if (winT > winH) {
+            box.style.display = 'block'
+        } else {
+            box.style.display = 'none'
+        }
+    };
+    let timer =0;
+    let duration=2000;
+
+    box.onclick = function () {
+        let winT = utils.win('scrollTop');
+        let steed=winT/duration;
+        box.timer = setInterval(function () {
+
+            timer+=20;
+            //winT=+100;
+            if (timer>=duration) {
+                clearInterval(box.timer);
+                utils.win('scrollTop', 0);
+                return;
+            }
+            utils.win('scrollTop', winT-timer*steed);
+            console.log(winT - timer * steed);
+        }, 17)
+    }
+</script>

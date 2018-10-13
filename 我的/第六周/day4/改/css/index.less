@@ -1,0 +1,223 @@
+@import  (reference) "public.less";
+
+.header {
+  .nav {
+    .pos(@position:fixed);
+    height: 83px;;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    .top {
+      width: 1000px;
+      margin: 0 auto;
+      h1 {
+        width: 325px;
+        height: 33px;
+        background: url("@{url}/logo1.png") no-repeat;
+        float: left;
+        margin-top: unit((83-33)/2, px);
+      }
+      ul {
+        float: right;
+        li {
+          float: left;
+          font-size: 16px;
+          color: @color-width;
+          padding: 0 25px;
+          line-height: 83px;
+        }
+      }
+    }
+  }
+  .slide {
+    height: 638px;
+    width: 100%;
+    background: url("@{url}/banner1.jpg") no-repeat center top;
+  }
+}
+
+.channel {
+  ul {
+    text-align: center;
+    margin: 30px 0;
+    li {
+      display: inline-block;
+      padding: 0 10px;
+      p {
+        font-size: 14px;
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+.travel {
+  width: 100%;
+  height: 751px;
+  background: url("@{url}/slide-view.jpg") no-repeat;
+  position: relative;
+  ul {
+    width: 100%;
+    .pos(@bottom: 2%);
+    text-align: center;
+  }
+  li {
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    background: #fff;
+    border-radius: 50%;
+    margin: 0 15px;
+    display: inline-block;
+    font-size: 16px;
+    box-shadow: 0 0 0 0 #00cc99;
+    .transition(@property: box-shadow;@duration: 1s);
+    &:hover {
+      box-shadow: 0 0 0 30px transparent;
+      background: #00cc99;
+      color: #fff;
+    }
+  }
+}
+
+.service {
+  ul {
+    text-align: center;
+    li {
+      width: 263px;
+      display: inline-block;
+      border-right: 1px solid #fff;
+      img {
+        width: 100%;
+      }
+      h3 {
+        font-size: 18px;
+        padding: 10px 0;
+      }
+      p {
+        font-size: 14px;
+        line-height: 30px;
+        text-align: left;
+      }
+    }
+  }
+}
+
+//根据条件设置不同的css样式
+/*@media all and (max-width: 1000px) {
+  .header {
+    .nav {
+      .top {
+        width: 100%;
+        h1 {
+          width: 135px;
+          background: url("@{url}/logo2.png") no-repeat;
+          background-size: 277px 33px;
+        }
+      }
+    }
+    .slide {
+      height: 465px;
+      background-size: 1399px 465px;
+    }
+  }
+  .channel {
+    ul {
+      li {
+        max-width: 14%; //如果内容的宽度大于14% 则显示14%的宽度，若内容宽度没有达到14%，则显示成自身内容的宽度，这样图片就不会变形
+        !*padding: 0;*!
+        margin: 0 1%;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }.service {
+      ul {
+        li {
+          max-width: 30%;
+          vertical-align: top;
+        }
+      }
+    }
+}
+
+
+
+@media all and (max-width: 480px) {
+  .channel {
+    ul {
+      li {
+        width: 50%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        img {
+          max-width: 50%;
+        }
+        &:nth-child(3) img {
+          max-width: 50px;
+        }
+      }
+    }
+  }
+}*/
+@media all and (max-width: 1000px) {
+  .header{
+    .nav{
+      .top{
+        width: 100%;
+        h1{
+          width: 135px;
+          background: data-uri("@{url}/logo2.png") no-repeat;
+          background-size: 277px 33px;
+        }
+      }
+    }
+    .slide{
+      height: 465px;
+      background-size: 1399px 465px; //等比例缩放背景图
+    }
+  }
+  .channel{
+    ul{
+      li{
+        max-width: 14%;//如果内容的宽度大于14%，则显示14%的宽度，若内容的宽度没有到达14%，则显示成自身内容的宽度。这样图片就不会变形
+        padding: 0;
+        margin:0 1%;
+        img{
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+.service{
+  ul{
+    li{
+      max-width: 30%;
+      vertical-align: top;
+    }
+  }
+}
+@media all and (max-width: 480px) {
+  .channel{
+    ul{
+      li{
+        width: 50%;
+        max-width: 100%;
+        margin: 0;
+        img{
+          max-width: 50%;
+        }
+        &:nth-child(3) img{
+          max-width: 50px;
+        }
+      }
+    }
+  }
+}
+
+//过渡动画效果（transition） 在一定时间内  css属性值由其实值向结束值之间平滑过渡的效果
+//css属性
+//起始值        结束值
+//0 #00cc99     15  transparent

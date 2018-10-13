@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box">
+    <p id="licensePlate"></p>
+    <input type="button" value="摇号" id="shakeBtn">
+</div>
+</body>
+</html>
+<script>
+    var str1 ="ABCEFGHJK";
+    var str2='1234567890';
+    var p = document.getElementById('licensePlate');
+    var inputs=document.getElementById('shakeBtn');
+    var j=0;
+    inputs.onclick=function  fn () {
+        if(j<3){
+        p.innerHTML='京';
+        var index1 = Math.round(Math.random()*(str1.length-1));
+        p.innerHTML +=str1[index1];
+        for (var i=0;i<4;i++){
+            var index2 = Math.round(Math.random()*(str2.length-1));
+            p.innerHTML +=str2[index2];
+        }
+        j++
+        }
+    return  p.innerHTML;
+    };
+</script>

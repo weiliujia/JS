@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            width: 500px;
+            margin: 50px auto;
+            border: 1px solid red;
+            text-align: center;
+        }
+        li{
+            width: 100%;
+            height: 50px;
+            border-bottom:1px solid #1b8055;
+        }
+        .bg{
+            background: #24d5ff;
+        }
+        .bg1{
+            background: #575f05;
+        }
+        .bg2{
+            background: #000000;
+        }
+        .bg3{
+            background: #ff3269;
+        }
+        .
+        /*li:nth-child(odd){*/
+            /*background: red;*/
+        /*}*/
+        /*li:nth-child(even){*/
+            /*background: greenyellow;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<ul>
+    <li>01</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+</ul>
+</body>
+</html>
+<script>
+/*
+var lis=document.getElementsByTagName('li');
+for (var i = 0; i <lis.length; i++) {
+       if(!(i%2)){
+           lis[i].className= 'bg';
+           lis[i].cc = 'bg'
+       }else {
+           lis[i].className = 'bg2';
+           lis[i].cc = 'bg2'
+       }
+       lis[i].onmousemove = function (){
+           this.className = 'bg3';
+       }
+       lis[i].onmouseout = function () {
+           this.className = this.cc
+       }
+}
+*/
+
+
+
+var lis=document .getElementsByTagName('li');
+for (var i = 0; i < lis.length; i++) {
+    if(i%3){
+        if(i%3==true){
+            lis[i].className= 'bg1';
+            lis[i].cc = 'bg1'
+        }else{
+            lis[i].className= 'bg2';
+            lis[i].cc = 'bg2'
+        }
+    }else {
+        lis[i].className= 'bg';
+        lis[i].cc = 'bg'
+    }
+    lis[i].onmousemove = function (){
+        this.className = 'bg3';
+    }
+    lis[i].onmouseout = function () {
+        this.className = this.cc
+    }
+}
+
+
+
+
+
+</script>

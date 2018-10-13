@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+     * get和post区别
+     *
+     * */
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', 'last.json?user=zf&login=123#box', false);
+    xhr.onreadystatechange = function () {
+
+    };
+    xhr.send();
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('post', 'last.json', false);
+    xhr.onreadystatechange = function () {
+
+    };
+    xhr.send(JSON.stringify({name:'zf'}));
+
+
+
+    /*
+     *
+     * get 和 post 请求方式不同
+     * 1.get和post的传参方式不同
+     * get
+     *  xhr.open('get', 'last.json?user=zf&login=123#box', true);
+     *
+     *
+     *  不想让让她走缓存
+     *
+     *
+     *
+     *  3.传输的大小
+     *  get chrome 8k moz 7k ie 2k
+     *  post 严格意义来说，没有限制大小，但是为了请求数据能快速响应，一般建议在100k之内
+     *
+     *  安全性
+     *  get传参的方式是添加在url地址上，很容易被窃取
+     *  post 一般情况下不会轻易拿到
+     *
+     *  登录注册
+     *  注册：将用户名和密码发送给服务端，服务端警告用户名和密码保存到数据库当中
+     *  登录：用户登录的时候，输入用户名和密码登录，服务端去怇中进行筛选验证，通过之后返回一个成功指令，灵且返回给客户端cook中种一个token码
+     *  下一次客户端再访问当前网站的其他页面的时候，活魔人发送ajax请求，客户都会默认会带有cookie=>服务端下发的token在cookie中，服务端发现客户端带有我下发的token码，请求页面的时候，服务端就允许客户端进行请求访问，并且不许需要重新登录
+     *
+     *  同样也可以给token设置过期时间，防止客户端长时间不操作，让客户端再点击的时候重新登录
+     *
+     * */
+</script>

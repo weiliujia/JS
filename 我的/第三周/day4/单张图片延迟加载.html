@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>延迟加载</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #box{
+            width: 1002px;
+            height: 715px;
+            margin: 1000px auto;
+            background: url("img/loading1.gif") no-repeat center center;
+            background-size: cover;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <img src="" data-src="img/1.jpg" alt="这是一只傻狗狗">
+</div>
+
+</body>
+</html>
+<script  src="utils.js"></script>
+<script>
+    /*
+    *延迟加载：又名懒加载，在性能优化中非常重要的一个环节，多用于图片大量的网站和移动端 https://tinypng.com/
+    * 延迟加载的过程：浏览器滑动到当前的图片的时候，我们在准备去请求数据，和展示图片，在展示图片的时候，我们创建一个临时的图片去试加载，一但加载成功，将正确的地址返回给真实的标签元素，【如果直接是img图片加载失败的话，页面上会油价在失败的裂图，是非常不友好的】
+    * */
+    let box = document.getElementById('box');
+    let img = box.getElementsByTagName('img')[0];
+    //1.计算滚动条滑到图片位置这一块的距离
+    let winH = utils.win('clientHeight');//浏览器一屏的高
+    let imgH = box.offsetHeight;//图片的自身高度
+    let imgT = utils.offset(box).top;//图片距离Body的距离
+    window.onscroll = function () {
+        //只有滚动条不断的触发，才会让scrollTop不断变化
+        let winT = utils.win('scrollTop');//注意我是不断变化的
+        if (winT+winH>imgH+imgT){//这样的值计算
+            if(img.load)return;
+            let newImg = document.createElement('img');
+            //创建一个img标签的原因:因为img标签上天生自带src属性，而sec属性所对应的属性值是必须是图片的路径地址
+            //获取到图片上的data-src
+            newImg.src = img.getAttribute('data-src');
+
+            //让新图片试加载
+            //onload 当图片加载成功【路径正确】的时候，执行这个方法，我们将加载成功的地址，给原有的图片
+            newImg.onload = function () {
+                img.src = this.src;
+                img.load = true;
+                img.style.opacity = 1;
+            };
+            newImg.onerror = function () {
+                img.src = 'img/error.jpg';
+                img.style.opacity = 1;
+            }
+        }
+    };
+    //window.onload // 表示整个文档中图片，结构全部加载完自行方法
+</script>

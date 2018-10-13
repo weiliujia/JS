@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+   /* var num = 3;
+    var obj = {
+        num:5,
+        fn : (function(){
+            this.num*=2;
+            var num = 4;
+            return function(){
+                this.num *=2;
+                num *= 4;
+                alert(num);
+            }
+        })()
+    }
+    var fn = obj.fn;
+    alert(num);
+    fn();
+    obj.fn();
+    console.log(window.num,obj.num);*/
+/*   var a=1;
+   function f1() {
+       console.log(a);//1
+   }
+   function fn1() {
+       var a=2;
+       f1();
+   }
+   fn1();*/
+ /*  var a=2;
+    var obj1={
+    a:1,
+    fn1:(function (a) {
+    this.a=a;
+    a++;
+    return function () {
+    this.a=a++;
+    console.log(a);//4
+    }
+    })(a)
+    };
+    obj1.fn1();//2
+    var fn1=obj1.fn1;
+    fn1();*/
+   /*var b="b";
+   var obj2={
+       b:"B",
+       getB:function (b) {
+           this.b=b+this.b;
+           return this.b
+       }
+   };
+   console.log(obj2.getB("是"));*/
+   var aa=20;
+   function bind() {
+       var aa=12;
+       function fn() {
+           console.log(this.aa);
+       }
+       box.onclick=function () {
+           fn();
+       }
+   }
+</script>

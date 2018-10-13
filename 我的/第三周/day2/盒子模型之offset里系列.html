@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background: #f083da;
+            padding: 10px;
+            margin: 10px;
+            border: 10px solid #59e655;
+        }
+    </style>
+</head>
+<body>iv
+<div id="outer">
+    <div id="box"></div>
+</div>
+</body>
+</html>
+<script>
+    /*
+    * offset系列
+    * offsetWidth ：整个盒子的宽度【content+padding左右 +border左右】
+    * offsetHeight：整个盒子的高度【content+padding上下 +border上下】
+    * offsetParent: 父级参照物:一个元素的父级参照物，就看他的父级是否有发生定位，如果有，那么他的父级就是当前元素的伏击参照物，如果没有，那么他的父级参照物就是body
+    * offsetTop： 当前元素外边距距离父级参照物的内边距的上偏移量
+    * offsetLeft：当前元素外边距距离父级参照物的内边距的左偏移量
+    *
+    */
+    /*var box = document.getElementById('box');
+    var boxW= box.offsetWidth;
+    var boxH= box.offsetHeight;
+    var kuan = document.documentElement.clientWidth || document.body.clientWidth;
+    var gao = document.documentElement.clientHeight || document.body.clientHeight;
+    box.style.marginLeft = (kuan-boxW)/2+'px';
+    box.style.marginTop = (gao-boxH)/2+'px';
+    console.log(gao);
+    console.log(box.offsetWidth);*/
+
+    //封装一个方法，求出当前元素距离body的偏移量
+    function offset(ele) {
+     //先求出元素距离父级参照物的偏移量
+        let l = ele.offsetLeft;
+        let t = ele.offsetTop;
+        let parent = ele.offsetParent;
+        //判断父级参照物是不是body，如果是body，证明已经到了最外层的body元素，就不用再循环了，如果不是body，我们继续循环父级参照物，累加父级参照物的边框以及偏移量
+        while (parent.tagName!='BODY'){
+            //需要累加父级参照物的左边框
+            l+=parent.clientLeft;
+            t+=parent.clientTop;
+            //需要累加父级参照物的左偏移量
+            l+=parent.offsetLeft;
+            t+=parent.offsetTop;
+            //更新父级参照物
+            parent = parent.offsetParent;
+           // window.navigator.userAgent;
+        }
+        /*
+        *在ie8 有兼容问题，他的偏移量包括边框的高度
+        * window.navigator.userAgent 来判断当前浏览器是什么版本的浏览器
+        * 通过正则 /MSIE 8/.test(window.navigator.userAgent)
+        *
+        * */
+        return {left:l,top:t}
+    }
+    console.log(offset(box).left);
+</script>

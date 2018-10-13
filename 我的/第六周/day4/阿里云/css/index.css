@@ -1,0 +1,93 @@
+#header {
+  width: 100%;
+  background: rgba(16, 28, 76, 0.8);
+  height: 80px;
+}
+#header .main {
+  width: 1200px;
+  margin: 0 auto;
+}
+#header .logo {
+  float: left;
+  height: 33px;
+  display: block;
+  padding-top: 25px;
+}
+#header .logo .img {
+  width: 100%;
+}
+#header .nav {
+  float: left;
+  width: 700px;
+}
+#header .nav ul {
+  float: left;
+  width: 700px;
+}
+#header .nav ul li {
+  float: left;
+  width: 13%;
+  text-align: center;
+  line-height: 80px;
+}
+#header .nav ul li a {
+  color: #fff;
+}
+.conent {
+  width: 100%;
+  height: 500px;
+}
+.conent .con {
+  text-align: center;
+}
+.conent .con h3 {
+  font-size: 25px;
+  line-height: 40px;
+}
+.conent .con p {
+  font-size: 20px;
+  line-height: 40px;
+}
+.conent .con1 {
+  /*width: 100%;*/
+  width: 1519px;
+  margin: auto;
+}
+.conent .con1 ul {
+  text-align: center;
+  margin: 50px 20px 0;
+}
+.conent .con1 ul li {
+  float: left;
+  margin-left: 70px;
+}
+.conent .con1 ul li img {
+  /*width: 100%;*/
+  height: 156px;
+}
+.list {
+  width: 100%;
+  position: relative;
+}
+.list ul {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 40px;
+  width: 250px;
+  margin: 0 auto;
+  text-align: center;
+}
+.list ul li {
+  float: left;
+  width: 20%;
+  margin-left: 10px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 50% ;
+  background: #fff;
+}
+.tu {
+  width: 100%;
+  margin: 0 auto;
+}

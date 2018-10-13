@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //面向对象编程 OOP(object oriented programming) 以对象数据类型为导向的编程
+    //对象类型（object,array,regExp,Date...）
+    //单例模式，工厂模式，构造函数模式，原型模式
+   /*var name = "李文学";
+   var age = 24;
+
+   var name =  "张凤卜";
+   var age = 19;
+   console.log(name,age);
+   */
+   //记录的信息冲突，如何解决呢？ 分组放入对象中
+    var stu1 = {
+        name:"李文学",
+        age:24,
+        writeCss:function(){
+            console.log("writeCss");
+            stu2.writeJs();
+        }
+    };
+    var stu2 = {
+        name:"张凤卜",
+        age:19,
+        writeJs:function(){
+            console.log("writeJS");
+        }
+    }
+
+   //把描述同一事物的属性和特征存入命名空间里，这种模式就叫单例模式
+   //stu1和stu2就是命名空间的名称
+   //好处：按照事物的特征分组，解决了冲突和覆盖问题
+   //特点：门户大开型，谁都可以访问
+   //获取同一模块下的方法：this.属性名()
+   //获取其他模块下的方法：模块名.属性名();
+    //登录模块
+    /*var loginModel = {
+        login:function(){
+            console.log("login")
+        },
+        register:function(){
+            this.login(); //在同一个模块里调用其他的方法
+            console.log("register");
+        }
+    }
+    loginModel.register();*/
+    //邮箱模块
+    /*var emailModel = {
+        checkEmail:function(){
+            console.log("checkEmail")
+        },
+        checkUser:function(){
+            loginModel.login();
+            console.log("checkUser");
+        }
+    }
+     emailModel.checkUser();*/
+
+    //升级单例模式 ->高级单例模式
+    //需求：部分功能其他模块能访问，有些功能是内部模块的，其他功能不能访问
+    //解决了私有和公有的问题
+    var loginModel = (function(){
+        //在这里面操作的功能是私有的，若想其他模块能访问，只要放在对象中返回就行
+        var name="lily";
+        function login(){console.log("login")};
+        function register(){console.log("register")};
+        return {
+            login:login
+        }
+    })();
+
+    var emailModel = {
+        name:"lucy",
+        checkUser:function(){
+            loginModel.register();
+            console.log("checkUser");
+        }
+    }
+    emailModel.checkUser();
+
+
+    //单例模式  自己缝制一件衣服
+    //工厂模式  需求1000件相同的衣服
+
+
+</script>

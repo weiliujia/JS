@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //中括号；只能取一位
+    var reg = /[11-30]/;
+
+    //在中括号中\w\s\d还代表它特殊的含义
+    var reg = /[\w\s\d]/;
+    //.?&....代表它本身的含义
+    var reg= /[.?&]/;
+    //在中括号中^ 代表非 - 代表范围
+    var reg = /[^a-z]/;
+
+    //10-20
+    var reg = /^1\d|20$/;
+    //18-29
+    var reg = /^(1[8-9])|(2\d)$/;
+    //手机号
+    var reg = /^\d{10}$/;
+    //身份证号
+    var str= 130123199706022712;
+    var reg = /^\d{6}(\d{4})(\d{2})(\d{2})(\d{2})(\d)(?:\d|x)$/;
+    var ary = reg.exec(str);
+    console.log(`你好，David，你的生日是${ary[1]}年${ary[2]}月${ary[3]}日，你的性别是${ary[4]%2?'男':'女'}`);
+    //攻 1 受0  0.5/
+
+
+
+
+
+    //小括号
+    //提高优先级，分组捕获，分组引用
+    var reg = /^1|2$/;
+    //以1开头，或者以2结尾的字符串
+    //123423423423
+    var reg = /^(1|2)$/;
+    //1 2
+
+
+    //分组引用
+    18955665566
+    var reg = /^189(\d{2})(\d{2})\1\2$/;
+
+    //分组捕获
+    var str = 'zhu2018feng2019';
+    //exec
+    var reg = /\d+/g;
+    var reg = /zhu\d+feng\d+/;
+    var reg = /^[a-z]+(\d+)[a-z]+(\d+)$/;
+    console.log(reg.exec(str));
+
+
+    //input框【输入用户名】；首字母必须是英文， 6-15字符 不能用特殊符号&
+    var reg = /[a-z]\w{5,14}$/i;
+
+    //匹配一个前面有空格，或者后面有空格的字符
+    var str = ' a ' //'a'
+    var reg = /^\s+|\s+$/;
+    var reg = /^ +| +$/;
+</script>

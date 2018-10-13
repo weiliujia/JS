@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #box {
+            width: 300px;
+            height: 300px;
+            background: lawngreen;
+            border: 10px solid red;
+            margin: 50px auto;
+        }
+
+        #mark {
+            height: 50px;
+            width: 50px;
+            background: #ff2ee1;
+            position: relative;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    var div = document.createElement('div');
+    div.id = 'mark';
+    var minL = 0, minT = 0, maxL = 0, maxT = 0;
+    box.onmouseenter = function () {
+        this.appendChild(div);
+        maxL = box.clientWidth - mark.offsetWidth;
+        maxT = box.clientHeight - mark.offsetHeight;
+        this.onmousemove = function (e) {
+            //e.clientX e.clientY =>这两个值会根据你鼠标的位置不断地变化
+            let l = e.clientX - this.offsetLeft - mark.offsetWidth / 2;
+            let t = e.clientY - this.offsetTop - mark.offsetHeight / 2;
+            if (l<minL){
+                l=minL
+            }else if(l>maxL){
+                l=maxL;
+            }
+            if (t<minT){
+                t=minT
+            }else if(t>maxT){
+                t=maxT;
+            }
+            mark.style.left = l + 'px';
+            mark.style.top = t + 'px';
+        };
+        box.onmouseleave = function () {
+            this.removeChild(mark);
+        }
+    }
+</script>

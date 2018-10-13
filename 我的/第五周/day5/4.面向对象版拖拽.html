@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div {
+            width: 100px;
+            height: 100px;
+            background: #42d1ff;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            cursor: move;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+<div>小</div>
+<div>猪</div>
+<div>佩</div>
+<div>奇</div>
+</body>
+</html>
+<script src="event.js"></script>
+<script src="drag.js"></script>
+<script>
+
+
+
+    //低耦合，高内聚
+    var index = 0;
+    function increase() {//按下时
+        this.style.zIndex = ++index;
+        this.style.background = 'black';
+    }
+    function backColor() {//松开鼠标时
+        this.style.background = '#42d1ff';
+        this.style.border = '3px dashed red';
+    }
+
+
+    let oDivs = document.querySelectorAll('div');
+    for (let i = 0; i < oDivs.length; i++) {
+        let oDiv = oDivs[i];
+        new Drag(oDivs[i]);
+        on(oDiv, 'dragStart', increase);
+        on(oDiv, 'dragUp', backColor);
+    }
+</script>

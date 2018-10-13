@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
+<script>
+    /*
+    *类数组:arguments 元素集合
+    *
+    *
+    *
+    * */
+    var lis= document.getElementsByTagName('li');
+    /*[].slice.call(lis);
+    [].splice.call(lis,0);
+    [].concat.call(lis);*/
+
+
+    var newAry = [];
+    for (var i = 0; i < lis.length; i++) {
+        newAry.push(lis[i])
+    }
+    console.log(newAry);
+</script>
+<script>
+    function toAry(ary) {
+        if('getComputedStyle' in window){
+           return [].slice.call(ary);
+        }else{
+            var newAry = [];
+            for (var i = 0; i < ary.length; i++) {
+                newAry.push(ary[i])
+            }return newAry
+        }
+    }
+    var ary = toAry(lis);
+    console.log(ary);
+</script>

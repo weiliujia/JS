@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background: rebeccapurple;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    var box = document.getElementById('box');
+    var target = utils.win('clientWidth') - box.offsetWidth;
+    var step = 0;
+    box.timer = setInterval(() => {
+        step += 17;
+        if (step+17 >= target) {
+            clearInterval(box.timer);
+            utils.css(box, 'left', target);
+            return;
+        }
+        utils.css(box, 'left', step);
+    }, 13);
+</script>

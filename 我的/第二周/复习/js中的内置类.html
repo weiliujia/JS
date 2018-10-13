@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * 每一个数据类型都有它所属的类，除了null和undefined
+    * 每一个数据类型都可以通过__proto__找到基类Object
+    * 所有的元素都有它所属的类
+    *
+    *
+    * instanceof：检测数据类型
+    * 检测当前实例是否属于这个类
+    * 缺点;不可以检测字面量方式创建的数据类型
+    *
+    *
+    *
+    * in 判断当前属性是否在当前对象中；通过in这种方式既可以检测私有属性，也可以检测共有属性：检测出来的返回值是一个布尔值
+    * hasOwnProperty 私有属性：检测当前的值是否是对象的私有属性
+    * */
+        function hasPubProperty(obj,key) {
+           //
+            return key in obj && !obj.hasOwnProperty(key)
+        }
+    hasPubProperty(obj,'name')
+    hasPubProperty(obj,'constructor')
+</script>

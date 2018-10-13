@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * 检测数据类型
+    * typeof
+    * 它可以检测到大部分的数据类型，但是除了nill、数组、正则检测不到，检测出来的值是Object
+    * instanceof
+    * 判断当前值是否是类的一个实例，它不能检测字面量创建的基本数据类型
+    * =》基本数据类型都必须通过实例化的方式来创建，才可以用这个关键字来检测
+    * =》new 关键字 类
+    * constructor
+    * xxx.constructor.name => 类名
+    * 检测当前实例是否属于这个类，除了null和undefined
+    * => 我们以可通过输出constructor.name 类名进行判断
+    * Object.prototype.toString.call()
+    * 可以通过修改对象原型上的toString方法中的this，来检测数据类型，这种方式可以检测所有的值
+    * */
+     function type(value) {
+         var con = Object.prototype.toString.call(value);
+         var index = con.indexOf('');
+         return con.slice(index+1,con.length-1)
+     }
+
+    console.log(type(9));
+    console.log(type(''));
+    console.log(type(function () {}));
+</script>

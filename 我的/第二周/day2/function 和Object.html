@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    *类分为内置类和自定义类
+    * 类都是由构造函数生成的
+    *类本身是一个函数，所以作为一个函数，他都是function类的一个实例
+    *而万物皆对象，所有的数据类型都可以通过__proto__找到基类Object
+    *
+    *
+    * */
+
+    /*
+    * 检测数据类型
+    * constructor
+    * 检测当前实例是否属于某个类，除了null和undefined   //因为没有所属的类
+    *
+    * */
+    function Fn() {}
+        var f = new Fn;
+        console.log(Fn instanceof Function);//true
+    console.log([1].constructor);
+
+</script>

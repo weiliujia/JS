@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>
+        <span>用户名:</span>
+        <span id="username"></span>
+    </li>
+    <li>
+        <span>密码:</span>
+        <span id="password"></span>
+    </li>
+    <li>
+        <span>邮箱:</span>
+        <span id="email"></span>
+    </li>
+    <li>
+        <span>手机号:</span>
+        <span id="mobile"></span>
+    </li>
+    <li>
+        <span>个人主页:</span>
+        <span id="url"></span>
+    </li>
+</ul>
+</body>
+</html>
+<script>
+    console.log(location.href);
+    let url = window.decodeURIComponent(location.href);
+    let reg = /(\w+)=([\w//@.:]+)/g;
+    let obj={};
+    url.replace(reg,function () {
+        obj[arguments[1]]=arguments[2]
+    });
+    //url.replace(reg,(...reg)=>obj[reg[i]]=[reg[2]]);
+    console.log(obj);
+    for (var key in obj){
+        document.getElementById(key).innerHTML=obj[key];
+    }
+</script>

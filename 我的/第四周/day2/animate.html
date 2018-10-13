@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background: lightblue;
+            position: absolute;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script src="animate.js"></script>
+<script>
+    let box = document.getElementById('box');
+   /* animate(box,{width:200,height:200,left:300,top:100,},2000,function () {
+        this.style.backgroundColor = 'yellow';
+        animate(box,{width:1,height:1,left:800,top:300,},2000,function () {
+            this.style.backgroundColor = 'red'
+        })
+    })*/
+   function go() {
+       animate(box,{width:80,height:80,left:1500,top:20,background : 'red'},300,back)
+   }
+    function back() {
+        animate(box,{width:20,height:20,left:1500,top:500,background : 'black'},200,backk)
+    }
+    function backk() {
+        animate(box,{width:50,height:50,left:0,top:500,background : 'yellow'},400,c)
+    }
+    function c() {
+        animate(box,{width:50,height:50,left:0,top:0,background : 'pink'},400,go)
+    }
+
+
+    go()
+</script>

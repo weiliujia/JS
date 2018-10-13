@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>let&&const</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+     * let 和const
+     * 共同点：
+     * 1.都没有变量提升
+     * 2.let和const 声明的变量不可以重复声明
+     * 3.let和const不会给全局对象window增加一个属性
+     *
+     * 不同点：
+     * const声明的变量必须赋值
+     * const声明的变量不可以修改【基本数据类型】，【引用数据类型不可以重新修改地址，但是可以修改引用数据类型中的值】
+     *
+     * 注意：在当前作用域下，let声明的的变量会全局进行检查，只要发现有相同的变量名直接报错
+     * */
+    let a;
+    console.log(a);
+    console.log('a' in window);
+
+    let fn = function () {
+
+    };
+    fn();
+
+    //const 声明的变量为静态变量，又称为常量
+    //一般情况下我们用const声明的常量都是字符串，而且大多数都是大写的
+
+</script>

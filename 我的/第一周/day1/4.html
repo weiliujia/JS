@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class='box'>
+    <p id='licensePlate'></p>
+    <input type='button' value='摇号' id='shakeBtn'/>
+</div>
+</body>
+</html>
+<script>
+    var strr='ABCEFGHJK';
+    var str='ABCDEFGHIJKLMNOPQRSTUVWXYZ'+'0123456789';
+    var oBox=document.getElementsByName('box');
+    var oP=document.getElementById('licensePlate');
+    var oInput=document.getElementById('shakeBtn');
+    var cun=0;
+    oInput.onclick = function cal(){
+
+            if(cun<3){
+                cun++
+
+
+        var newStrr='';
+        var wz='京';
+        for (var j = 0; j < 1; j++) {
+            var  indexx=Math.round(Math.random()*(strr.length-1));
+            if(newStrr.includes(str[indexx])){
+                j--;
+            }else{
+                newStrr += strr[indexx]
+            }
+        }
+       /* oP.innerHTML = wz+newStrr;*/
+        /*return (wz+newStrr)*/
+
+        var newStr='';
+        for (var i = 0; i < 5; i++) {
+            var  index=Math.round(Math.random()*(str.length-1));
+
+                newStr += str[index]
+
+        }
+            }else {
+                alert('没机会了')
+            }
+        oP.innerHTML = wz+newStrr+newStr;
+        return (wz+newStrr+newStr);
+    }
+
+   /* console.log(cal());*/
+</script>

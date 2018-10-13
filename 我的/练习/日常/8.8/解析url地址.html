@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*var  str ='https://www.baidu.com/s?ie=utf-8&f=3&rsv_bp=0&rsv_idx=1&tn=baidu&wd=%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E6%89%B9%E5%8F%91%E7%BD%91&rsv_pq=9fffdaa80002619f&rsv_t=93b9DnJDQLd2ghvuwgVARc7k6%2BmcGstiBWrAAR2jotKODo5fLBTRfBCJhUY&rqlang=cn&rsv_enter=1&rsv_sug3=6&rsv_sug1=6&rsv_sug7=101&rsv_sug2=0&prefixsug=aaaa&rsp=0&inputT=2391&rsv_sug4=2496'*/
+  /*  var ary = str.split('?');//首先通过？将字符串分成2部分，第二部分属于我们要拿的参数
+    var aryTow = ary[1].split('&');//我们再将参数中以&进行分隔，变成数组
+    console.log(aryTow);
+    var obj={};
+    //开始循环这个数组，将数组中的每一项以= 号进行分隔，分别放到对象中
+    for (var i = 0; i < aryTow.length; i++) {
+        //拿到数组中的每一项，以=号就行分隔
+        var cur = aryTow[i].split('=');
+        obj[cur[0]]=cur[1]
+    }*/
+
+  /*var ary = str.split('?');
+  var aryTow= ary[1].split('&');
+    var obj={};
+    for (var i = 0; i <aryTow.length; i++) {
+        var cor = aryTow[i].split('=');
+        obj[cor[0]]=cor[1];
+    }
+    console.log(obj);*/
+  var str = 'a1aaaaaabb2b2bbbc3c3cc2cc3ccc3cc';
+  /*  function f(str) {
+    var obj={};
+    for (var i = 0; i < str.length; i++) {
+        var cur = str[i];
+        if(obj[cur]){
+            obj[cur]++
+        }else{
+            obj[cur]=1
+        }
+      }return obj
+    }*/
+
+  function f(str) {
+      var obj={};
+      for (var i = 0; i < str.length; i++) {
+          var cur =str[i];
+          if(obj[cur]){
+              obj[cur]++ //如果里边有值++
+          }else {
+           obj[cur]=1   //如果不是第一次 让他等于1
+          }
+      }return obj
+  }
+    console.log(f(str));
+
+
+</script>

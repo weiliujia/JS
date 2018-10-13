@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    *
+    *
+    * ajax 异步的js和xml 它用来前后端数据交互的，他可以实现一步的局面刷新
+    * */
+    var xhr = new XMLHttpRequest();
+    xhr.open();
+    xhr.send(); //发送ajax请求
+    xhr.timeout=100;
+    xhr.ontimeout=()=>{
+        console.log("超时了");
+    };
+    xhr.readyState; //xhr会形成一个状态 4准备结束
+    xhr.status; //http状态码
+    xhr.onreadystatechange()//监听状态发生变化的事件
+
+</script>

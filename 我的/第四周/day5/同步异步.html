@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+     * 同步异步：js是单线程运行的，在js中分为同步和异步，也是就是 浏览器给我们提供的主任务队列和等待任务队列
+     * 同步：将任务按照顺序依次执行，当前这件任务没有完成，下面的任务不会开始
+     * 异步：在任务执行的时候，我们遇到异步执行的代码，由于他的等待的时间过长，我们直接跳过，继续执行下面的同步代码，代同步代码执行结束，到一部队列中看是否有时间已经到了js代码，然后再放入同步队列中执行
+     *
+     *
+     * 异步执行的代码：
+     * 所有的事件都属于异步执行，onclick onmousepver
+     * 所有的定时器都是异步执行，setTimeout setInterval
+     * 一般情况下ajax都是异步执行
+     * 回调函数也属于异步执行
+     *
+     * 注意：如果定时器时间为0的 话，会根据你所用的浏览器暗最低的毫秒数来执行，比如谷歌浏览器5-6ms， IE浏览器 10-13ms
+     * */
+    let time = new Date();
+    for (var i = 0; i < 100000000; i++) {
+
+    }
+    console.log(new Date() - time);
+</script>

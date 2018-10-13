@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,p{
+            margin: 0 ;
+            padding: 0;
+            list-style: none;
+        }
+        #box{
+            margin: 0 auto;
+            width: 150px;
+            height: 150px;
+            border: 1px solid royalblue;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <p>我是内容我是到合肥和莎拉是否合适v的v合适的话v在后世佛安抚后世佛shoo后回到好后的豪华导航大黄蜂i偶的宋康昊粉丝打开每次点击会丢放假哦 雕塑覅就是看美女觉得很拜佛i的生存空间u大家参考下就会不断呼吁大家能恢复还有的时间科技孵化的接送i空间和防护地级市独家对话瑞典空间互覅大家都会丰富多彩抵抗九九归看见吹得就会输风雨四季花园的打开就的恐惧抵抗就看见和一点空间树妖i</p>
+</div>
+</body>
+</html>
+<script>
+    /*
+    * scroll系列
+    * scrollWidth：盒子真实内容的宽度 【包括溢出和未溢出】
+    * 溢出：真实内容的宽度【clientWidth+】+溢出的宽度
+    * 未溢出：真实内容的宽度【clientWidth】
+    * scrollHeight：盒子真实内容的高度 【包括溢出和未溢出】
+    * 溢出：真实内容的宽度【clientHeight+】+溢出的高度
+    * 未溢出：真实内容的宽度【clientHeight】
+    * scrollLeft：当前盒子内容，向左卷出的距离
+    * scrollTop：当前盒子内容，向上卷出的距离
+    *
+    * 注意：scroll会计算盒子内容的高度或者宽度，包括溢出隐藏和溢出滚动
+    * */
+    //onscroll，滚动条出发以后，执行这个方法
+    //简单的方法实现下拉刷新
+    box.onscroll = function () {
+        console.log(box.scrollTop);
+        let boxT = box.scrollTop;
+        let boxH = box.clientHeight;
+        let boxS = box.scrollHeight;
+        console.log(boxH, boxT, boxS);
+        if (boxT+boxH+50>boxS){
+            box.children[0].innerHTML+= '乌龟跟王八'
+        }
+    }
+    //当滚动条滑到最底部的时候，
+    //scrollHeight = clientHeight + scrollTop
+</script>

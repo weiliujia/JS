@@ -1,0 +1,15 @@
+/*
+less中的函数
+
+*/
+
+.pub(@w:100px,@h:200px){//如果类名后边加括号就表示函数
+  width: @w;
+  height:@h;
+  background: red;
+}
+#box{
+  //.pub(500px,400px);//混合应用
+  .pub(@h:400px);
+  //background: blue;
+}

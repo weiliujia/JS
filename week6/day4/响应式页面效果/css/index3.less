@@ -1,0 +1,95 @@
+@import (reference) "public";
+.banner{
+    width: 100%;
+    height: 640px;
+    background: url(../images/banner1.jpg) no-repeat center top;
+}
+
+.header{
+    position: relative;
+}
+
+.navWrap{
+    .pos(@position: fixed,@left:0,@top:0);
+    width: 100%;
+    height: 83px;
+    line-height: 83px;
+    background:rgba(0,0,0,0.5);
+}
+.nav{
+    width: 1000px;
+    height: 100%;
+    margin: 0 auto;
+  h1{
+    width: 325px;
+    height: 33px;
+    float: left;
+   /* background: url("@{url}/logo1.png") no-repeat;*/
+    background-image:data-uri('@{url}/logo1.png') ;
+    background-repeat:no-repeat ;
+    margin-top: unit((83-33)/2,px);
+  }
+  ul{
+    float: right;
+    li{
+      float: left;
+      padding: 0 25px;
+      a{
+        font-size: 16px;
+        color: @color-white;
+        &:hover{
+          color: orange;
+        }
+      }
+    }
+  }
+}
+
+.slide ul li{
+  display: inline-block;
+  width: 90px;
+  height: 90px;
+  line-height: 90px;
+  background: #fff;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 16px;
+  margin: 0 10px;
+  box-shadow:  0 0 0 0 #00cc99;
+ .transition(@property: box-shadow);
+  .css3(transform,rotate(45deg));
+  .opacity(0.5);
+
+}
+.slide ul li a{
+  color: #333;
+}
+.slide ul li:hover{
+  background: #00cc99;
+  box-shadow:  0 0 0 30px transparent;
+
+}
+
+
+@media all and (max-width: 1000px) {
+   .nav{
+        width: 100%;
+    }
+    .nav h1 {
+        width: 135px;
+        height: 33px;
+        background: url(../images/logo2.png) no-repeat;
+        background-size:272px 33px;
+    }
+    .banner{
+        height: 465px;
+        background-size:1399px 465px;/*按照原比例缩放背景图*/
+        /* background-size: 20% 20%;盒子宽高的百分比*/
+        /*background-size:cover;铺满整个盒子，但是背景图片显示不完整*/
+        /*background-size:contain;背景图片显示完整，但是不一定铺满整个盒子*/
+    }
+
+
+
+}
+

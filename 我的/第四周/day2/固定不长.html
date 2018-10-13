@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    let box = document.getElementById('box');
+    var step = 0;
+    var boxW = box.offsetWidth;//当前盒子本身的高度
+    var winW = utils.win('clientWidth');//当前浏览器一瓶的宽度
+    var target = winW - boxW; //盒子要走的距离
+    box.onclick = function () {
+        this.timer = setInterval(() => {
+            step += 50;
+            if (step + 50 >= target) {
+                console.log(step);
+                console.log(target);
+                clearInterval(this.timer);
+                //清除定时器
+                utils.css(this, 'left', target);//让当前的这个盒子，还差一点的时候，最后补齐
+                return
+            }
+            utils.css(this, 'left', step)
+        }, 17)
+    }
+</script>

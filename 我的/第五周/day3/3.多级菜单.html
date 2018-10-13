@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .province {
+            width: 300px;
+            padding: 30px;
+            background: -webkit-linear-gradient(top left, yellowgreen, orange, gold, lightblue);
+            border: 1px solid red;
+            margin: 50px auto;
+        }
+
+        .province li {
+            position: absolute;
+        }
+
+        em, span {
+            display: inline-block;
+        }
+
+        .province li em {
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            top: 7px;
+            left: 0;
+            background: url("img/icon.png") no-repeat;
+            background-position: -59px -28px;
+        }
+
+        .province li em.open {
+            background-position: -42px -28px;
+        }
+
+        .province li span {
+            height: 30px;
+            line-height: 30px;
+            margin-left: 30px;
+        }
+
+        .province li ul {
+            margin-left: 40px;
+        }
+    </style>
+</head>
+<body>
+<ul class="province">
+    <li>
+        <em></em> <span>河北</span>
+        <ul class="city">
+            <li>
+                <em></em><span>唐山</span>
+
+                <ul class="county">
+                    <li>
+                        <span>路北区</span>
+                </ul>
+            <li>
+                <span>石家庄</span>
+            <li>
+                <em></em><span>山东</span>
+                <ul class="city">
+                    <li>
+                        <span>青岛</span>
+
+                </ul>
+            <li>
+                <span>河南</span>
+        </ul>
+</body>
+</html>

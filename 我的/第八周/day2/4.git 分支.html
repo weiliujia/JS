@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    *
+    * master 分支 一般是用来作为上线分支用的
+    *
+    *
+    * 《git branch 》 查看分支名
+    * 《git branch 分支名 》 ； 新建立一个分支
+    *  《git checkout 分支名》 从当前分支 切换到 指定分支
+    *
+    *
+    *  在新分支《git push 》 时 我们发现，提交不上去；git 命令 提示我们用
+    *  git push --set-upstream origin 分支名 只有使用这个命令我们才能把新分支和新分支的代码提交到远程仓库；这个提示只有在我们本地新切分支后第一次提交才会出现，在之后 我们直接用 git push 即可
+    *  不用在写后边的部分
+    *
+    *  当我们在dev分支上修改内容之后， 想要把dev分支上的代码合并到master上，需要我们先 切到 master分支； 在执行《git merge dev》
+    *  .这个命令 是把 dev的代码合并到 master上；
+    *
+    *
+    *  git branch  //查看当前库的所有分支
+    *  git branch 分支名  //本地库新切一个分支
+    *  这个名另在哪个分支执行 那么新产生的分支的内容就和当前是一模一样的
+    *  git branch nrc/181031
+    *  git checkout 分支名 //切换到新分支
+    *
+    *  git merge 分支名（nrc） //把nrc分支的内容合并到 当前分支
+    *  合并时也可能会产生冲突
+    *  也就是我们在执行 merge时 需要注意合并产生的冲突
+    *  //怎么产生冲突呢？ 在一个分支上修改某一个文件
+    * */
+</script>

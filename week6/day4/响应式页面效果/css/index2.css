@@ -1,0 +1,197 @@
+.banner{
+    width: 100%;
+    height: 640px;
+    background: url(../images/banner1.jpg) no-repeat center top;
+}
+
+.header{
+    position: relative;
+}
+.navWrap{
+    position: fixed;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 83px;
+    line-height: 83px;
+    background:rgba(0,0,0,0.5);
+}
+.nav{
+    width: 1000px;
+    height: 100%;
+    margin: 0 auto;
+}
+.nav h1{
+    width: 325px;
+    height: 33px;
+    float: left;
+    background: url(../images/logo1.png) no-repeat;
+    margin-top: 25px;
+}
+.nav ul{
+    float: right;
+}
+.nav ul li{
+    float: left;
+    padding: 0 25px;
+}
+.nav ul li a{
+    font-size: 16px;
+    color: #fff;
+}
+.channel ul{
+    text-align: center;
+    padding: 30px 0;
+}
+.channel ul li{
+    display: inline-block;/*行内块状元素*/
+    padding: 0 25px;
+}
+.channel ul li span{
+    display: block;
+    font-size: 16px;
+    padding-top: 25px;
+}
+.slide{
+    height: 751px;
+    background: url(../images/slide-view.jpg) no-repeat center;
+    position: relative;
+}
+.slide ul{
+    width: 100%;
+    position: absolute;
+    bottom:5%;
+    text-align: center;
+}
+.slide ul li{
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    background: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 16px;
+    margin: 0 10px;
+    box-shadow:  0 0 0 0 #00cc99;
+    transition: box-shadow 1s;
+
+}
+.slide ul li a{
+    color: #333;
+}
+.slide ul li:hover{
+    background: #00cc99;
+    box-shadow:  0 0 0 30px transparent;
+
+}
+.slide ul li:hover a{
+    color: #fff;
+}
+.service{
+    background: #eee;
+}
+.service ul{
+    padding: 30px 0;
+    text-align: center;
+}
+.service ul li{
+    display: inline-block;
+    width: 263px;
+    border-right:1px solid #fff;
+    background: #fff;
+    vertical-align: top;
+}
+.service ul li img{
+    width: 100%;
+}
+.service ul li h4{
+    font-size: 20px;
+    font-weight:bold;
+    padding: 10px 0;
+}
+.service ul li p{
+    font-size: 14px;
+    line-height: 25px;
+    padding: 0 10px;
+    text-align: left;
+}
+@media all and (max-width: 1000px) {
+   .nav{
+        width: 100%;
+    }
+    .nav h1 {
+        width: 135px;
+        height: 33px;
+        background: url(../images/logo2.png) no-repeat;
+        background-size:272px 33px;
+    }
+    .banner{
+        height: 465px;
+        background-size:1399px 465px;/*按照原比例缩放背景图*/
+        /* background-size: 20% 20%;盒子宽高的百分比*/
+        /*background-size:cover;铺满整个盒子，但是背景图片显示不完整*/
+        /*background-size:contain;背景图片显示完整，但是不一定铺满整个盒子*/
+    }
+
+
+    /*图片大小一样时用width,图片大小不一样时用max-width*/
+    .channel ul li{
+        max-width: 16%;/*若li宽度超过16%，则显示16%宽度，若小于16%，则显示自身的宽度*/
+       /* width: 16%;*/ /*li的宽度是否够16%，都显示16%宽度*/
+    }
+    .channel ul li img{
+       width: 100%;/*百分比是父标签宽度的百分比*/
+    }
+
+
+    .channel li:nth-child(1) img{
+        max-width: 80px;
+    }
+    .channel li:nth-child(2) img{
+        max-width: 50px;
+    }
+    .channel li:nth-child(3) img{
+        max-width: 50px;
+    }
+    .channel li:nth-child(4) img{
+        max-width: 100px;
+    }
+    .channel li:nth-child(5) img{
+        max-width: 100px;
+    }
+    .channel li:nth-child(6) img{
+        max-width: 100px;
+    }
+    .service ul li{
+        width: 30%;
+    }
+}
+
+@media all and (max-width: 750px) {
+    .nav ul li{
+        padding: 0 5px;
+    }
+}
+
+
+@media all and (max-width: 480px){
+    .channel ul li{
+        width: 50%;
+        max-width:100%;/*设置成默认值*/
+        padding: 0;
+    }
+    .service ul li{
+        float: none;
+        width: 90%;
+        padding: 0 5%;
+        text-align: left;
+        background: none;
+    }
+    .service ul li img{
+        width: 20px;
+        height: 20px;
+        float: left;
+        margin: 15px  10px 0 0;
+    }
+}

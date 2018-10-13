@@ -1,0 +1,30 @@
+@color-width:white;
+@url:'../images';
+.pos(@position:absolute;@left:0;@right:auto;@bottom:auto;@zIndex:0){
+  position: @position;
+  left: @left;
+  right: @right;
+  /*top:@top;*/
+  bottom: @bottom;
+  z-index: @zIndex;
+}
+.transition(@property:all;@duration:0s;@timing-function:ease;
+@delay:0s) {
+  /*-webkit-transition: @property @duration @timing-function;
+  -moz-transition: @property @duration @timing-function;
+  -ms-transition: @property @duration @timing-function;
+  -o-transition: @property @duration @timing-function;
+  transition: @property @duration @timing-function;*/
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -ms-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}
+.css3(@k,@v){
+  -wibkit-@{k}:@v;
+  -moz-@{k}:@v;
+  -ms-@{k}:@v;
+  -o-@{k}:@v;
+    @{k}:@v;
+}

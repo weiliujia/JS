@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+/*    var ary = [10,20];
+    function fn(ary){
+        ary.push(30);
+        ary=[100];
+        ary.push(40);
+        console.log(ary);
+    }
+    fn(ary);
+    console.log(ary);*/
+var i = 2,
+    x = 5;
+var fn = function (x) {
+    x += 3;
+    return function (y) {
+        console.log((x++)+y+(--i));
+    }
+};
+var f = fn(1);
+f(2);
+fn(3)(4);
+f(5);
+</script>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var ary=[1,2,5,5,1,4,3,4,5,4,5,8,3,1,2,5];
+  /*  function f() {
+        var obj={};
+        for (var i = 0; i < ary.length; i++) {
+            var con = ary[i];
+            if(obj[con]){
+                obj[con]++
+            }else {
+                obj[con]=1;
+            }
+        }return obj;
+    }
+    console.log(f(ary));*/
+ /* function fn(ary) {
+     var  newAry=[];
+     ary.sort(function (a,b) {
+     return a-b;
+     });
+     for (var i = 0; i < ary.length; i++) {
+     if (ary[i] == ary[i + 1]) {
+     } else {
+     newAry.push(ary[i]);
+     }
+     }return newAry;
+     for (var i = 0; i < ary.length; i++) {
+     if(ary[i]==ary[i+1]){
+     ary.splice(i,1);
+     i--;
+     }
+     }return ary
+     }*/
+
+ /* function fn(ary) {
+     var  newAry=[];
+     for (var i = 0; i <ary.length; i++) {
+     if(newAry.indexOf(ary[i])==-1){
+     newAry.push(ary[i]);
+     }
+     }return newAry;
+     }*/
+ /*function fn(ary) {
+     var obj={}, newAry=[];
+     for(var key in ary ){
+         var  con= ary[key];
+         obj[con]=con;
+     }
+     for(var key in obj){
+         newAry.push(obj[key])
+     }return newAry
+ }*/
+ /*function fn(ary) {
+     var newAry= [];
+     for (var i = 0; i <ary.length; i++) {
+         if(!newAry.includes(ary[i])){
+             newAry.push(ary[i]);
+         }
+     }return newAry
+ }*/
+    console.log(fn(ary));
+</script>

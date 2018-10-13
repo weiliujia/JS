@@ -1,0 +1,14 @@
+/*
+less 层级嵌套
+&:表示当前这个元素
+&>p：表示子代选择器
+*/
+
+#box{
+  &:hover{
+    font-size: 50px;
+  }
+  &>p{
+    color: red;
+  }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1">11111</div>
+</body>
+</html>
+<script>
+    //this指函数运行时的执行主体(方法调用的主体)
+    //=>1.方法运行时，方法名前面有没有.若没有，则this指的是window,若有点，点前面是谁，this就是谁
+    /*function fn(){
+        console.log(this);
+    }
+    var obj= {
+        fn:fn
+    }
+    fn();
+    obj.fn();*/
+
+    //2.自执行函数里的this是window
+    /*var obj = {
+        num:5,
+        fn:(function(){
+            //console.log(num);
+            //console.log(this);
+            return function(){}
+        })() //obj.num 作为实参会报错 obj是undefined  再去获取undefined的num属性则会报错
+    }*/
+
+    //3.事件绑定函数里this指绑定的元素
+    /*div1.onclick = function(){
+        console.log(this);//指绑定的元素 div1
+    }*/
+    //严格模式下，若没有指定执行主体，执行主体会是谁呢？ =>undefined
+    "use strict"; //会对整个js代码起作用
+    /*function fn(){
+        console.log(this);//undefined
+    }
+    fn();*/
+    //自执行函数里的this是undefined
+    ~(function(){
+        console.log(this);
+    })()
+
+</script>

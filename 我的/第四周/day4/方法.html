@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    let str = 'abcde';
+    console.log(str.includes('b'));
+    console.log(str.startsWith('b', 1));//从字符串的开头进行查找
+    console.log(str.endsWith('d'));//从字符串的末尾进行查找
+    console.log(str.repeat(2));//重复的个数，如果是零的话，清空字符串
+
+    //数组的方法
+    //Array.from(); //将类数组或者数组转成数组【类数组=>专数组】【数组=>克隆】
+    console.log(Array.of());//将数值转化成数组，但是Array一个值的时候会有问题，Array.of没问题;
+    console.log(Array());
+
+    //copyWithin(target,start,end);//从索引start到索引end开始截取【包前不包后】，从索引target的位置开始覆盖
+
+    //find //遍历数组，参数是一个函数，直到函数的返回值条件成立，不再继续便利把条件成立的返回值直接输出
+    var ary = [1, 2, 3, 4, 5];
+    var a = ary.find(function (item, index, inputs) {
+        console.log(item, index, inputs);
+        return itme > 1
+    });
+    console.log(a);
+    //fill(value,start,end):将目标值从索引start到索引end开始覆盖【包前不包后】
+    var a =ary.fill('x',0,1);
+    console.log(a);
+
+    //对象
+    //判断两个值是否相等，使用的严格比较,主要是针对由NaN的情况下
+    Object.is(NaN,NaN);//true
+    console.log(Object.assign({age: 9, name: 'zff'}));//将第二个及第二个以后的参数全部都赋值到第一个参数中，如果第一个参数是空对象的话，相当于克隆一个新对象
+
+    //Symbol:se6中的独一无二的值，基本数据类型
+    //Set 是一个类似数组的值，它是一个应用数据类型，它是一个新的数据类型
+    //我们可以通过new Set 创建一个实例
+    //Set这个数据类型
+    //add 向Set中增加一个值， delete删除一个值 has判断是否有值 clear清空
+
+    //Map ，通过new关键字创建一个Map对象
+    //set：给map对象增加键值对，delete删除某个键值对，has判断是否有某个键值对 clear：清空 get ，拿到某个值
+</script>

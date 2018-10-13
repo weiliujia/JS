@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 300px;
+            margin: 20px auto;
+        }
+        #box ul{
+            list-style: none;
+            width: 300px;
+            height: 50px;
+
+        }
+        #box ul:after{
+            display: block;
+            content: '';
+            clear: both;
+        }
+        #box ul li {
+            float: left;
+            width: 100px;
+            background: #91da58;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        #box ul li.active{
+            background: #ff79dd;
+        }
+        #box div{
+            background: #00c1ff;
+            width: 300px;
+            height: 200px;
+            display: none;
+            text-align: center;
+            line-height: 200px;
+            font-size: 10px;
+        }
+        #box div.active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li class="active">电视</li>
+        <li>电赢</li>
+        <li>音乐</li>
+    </ul>
+    <div class="active" style="background: #2bdac3"> 没时间</div>
+    <div style="background: #daa5b3">没时间看电影</div>
+    <div style="background: #91da58">没时间听音乐</div>
+</div>
+</body>
+</html>
+<script>
+  var box=document.getElementById('box');
+  var lis=box.getElementsByTagName('li');
+  var con=box.getElementsByTagName('div');
+  for (var i = 0; i < lis.length; i++) {
+      lis[i].jxb = i;
+      lis[i].onclick = function () {
+          for (var b = 0; b <lis.length; b++) {
+              lis[b].className = '';
+              con[b].className = '';
+          }
+          this.className = 'active';
+          con[this.jxb].className = 'active';
+      }
+  }
+</script>

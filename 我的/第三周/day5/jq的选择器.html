@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box">
+        <p></p><p></p>
+    </div>
+    <div id="box1">
+        <a href=""></a>
+        <p></p>
+    </div>
+    <div id="box2">
+        <p>1001</p>
+    </div>
+</body>
+</html>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+    /*
+    * jq中的选择器
+    * 共有两个参数，1参数：选择的那个值【选择的对象】，第二个参数，当前选择的上下文【默认不写，是document】
+    *
+    * 参数1有三种情况
+    * 1.当参数是字符串的时候，属于选择当前的这个元素，返回一个jq的对象
+    * 2.当参数是元素对象的时候，会转成一个jq对象[方便调用jq上面的方法]
+    * 3.当参数是一个函数的时候，表示整个页面的文档全部加载过后，在执行，和$(document).ready()这个方法是一样的
+    * */
+    console.dir($);
+    /*
+    * 0:div#box   //选择器内容
+     context:document  //上下文
+     length:1   // 选中的长度
+     selector:"#box"*/  // 选择器的名称
+
+    //根据撒行下文不同，选择不同的p标签【默认不写是document】
+    console.log($('#box'));
+    console.log($('p',box));
+    console.log($('p',box2));
+    //jq中的选择器和CSS的选择器是一样的
+    //console.log($('.bg'));
+    //第二种情况
+    let p2 = document.getElementById('p2');
+    console.log($(p2));
+    //第三种情况
+    $(function () {
+        console.log(123);
+    });
+    //这个函数会在所在的dom文档加载完成之后，执行这个方法
+    //这个函数和$(document).ready()这个方法是一样的
+    $(document).ready(function () {
+        console.log(456);
+    });
+    //这个方法属于，所有的dom结构包括文件，图片，连接地址。。。全部加载之后才会执行这个方法
+    //window.onload 这个方法写多了会进行覆盖，只会执行最后一个方法，而(document).ready()可以执行多次，而且不会重复
+    window.onload =function () {
+        console.log(789);
+    };
+    window.onload =function () {
+        console.log(12);
+    };
+
+    /*
+    * JQ的选择器
+    *
+    * */
+
+    //基本选择器
+    $('#box');
+    $('.box');
+    $('div');
+    $('*');
+    $('#box,#box2');
+
+    //层级选择器
+    $('#box p')//后代选择器
+    $('#box1>a');
+
+    //基本选择器
+    $()
+
+
+</script>

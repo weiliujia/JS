@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+/*
+ *
+ *
+*/
+<script>
+    var a=1;
+    window.b=2;
+    b=2;
+    console.log(window.a);
+    console.log(b);
+
+    var  a=1,b=2,c=3;
+    console.log(b, c);
+    //连等的情况下
+    var a=b=c=4;//b和c相当于给全局对象window增加的一个属性
+    console.log(b, v);
+
+    a=5;
+    console.log(c);
+
+
+</script>

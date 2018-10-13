@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    var box = document.getElementById('box');
+
+
+
+
+    //如果我们想要拿到内嵌中的样式
+    //参数1.当前的元素 参数2.元素上的伪类【默认不写】
+    //getComputedStyle；获取当前元素计算后的样式，在内嵌中
+    var a = window.getComputedStyle(box);
+
+</script>

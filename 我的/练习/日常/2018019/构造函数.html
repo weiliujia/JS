@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //Object类是所有的类的基类 其他是Object是派生类
+
+  //  var num = 10; //实例 Number类的实例
+    //Number String Boolean 包装类
+     //new Number(10) => {10}=>调用valueOf()变成基类型的数据
+   // new Array(10);// =>[empty*10] 每一项是undefined
+   // new Array('10');//=>['10']   构造函数
+   // new Array(10,20);//=>[10,20] 字面量
+
+    //构造函数模式，自定义类Person
+    //es5类叫构造函数   es6中就叫类class，其他语言叫类class
+    //1.批量生成 2.识别功能 返回对象都是Person类的实例
+    //缺点：所有的属性都是各个实例的，实例相关之间没关有关联，没法实现功能共享问题
+    function Person(name,age,sex) {//首字母大写 目的为了跟普通函数区别
+        //
+        //1.创建对象(系统自己创建)
+        //2.给对象添加功能
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.writeCss = function () {console.log('whileCss')};
+        this.whileJs = function () {console.log('whileJs')};
+    }
+        //3.返回对象（系统自己返回this）
+        //Person() //普通函数  不是构造函数
+        var P1 = new Person("刘徐刚",441,'女');
+              console.log(P1);
+        var P2 = new Person("刘徐强",241,'人妖');
+              console.log(P2);
+        //1.细节知识点
+        // 2.new Person() //匿名实例 var P1 = new Person () P1实例
+        //3.在构造函数不要写 return，若非写return：
+           //=> 基本数据类型  没影响
+           // => 引用类型的数据，则会覆盖系统的返回值
+        // 4. this.xxx 属性是实例的属性  var a=10； 这种不是通过this.xxx设置的属性与实例
+
+</script>

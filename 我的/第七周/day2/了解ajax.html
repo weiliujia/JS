@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+     *
+     * ajax async javascript and xml  异步的js和xml
+     * 用处：主要用来前后端数据交互，一般我们建议异步执行
+     * ajax 请求的数据会实现局部刷新，使用异步请求，保证我们的页面性能消耗最低
+     * xml可定制的html语言，xml是之前的数据传输格式，后来有了json以后，传输数据非常方便，ajax这个名称就没有进行修改
+     * <name>123</name>
+     * json
+     * {"name":"123"}
+     * ajax是微软发明的，ajax是谷歌进行宣传推广的
+     *
+     *
+     * */
+
+    //创建一个ajax对象
+    var xhr = new XMLHttpRequest();
+
+
+    //打开一个url地址连接
+    xhr.open("get", 'TCP协议.html', true, [username], [password]);
+    //参数三 属于是否异步 true 异步，false同步
+    //参数4 属于用户名 参数5 表示密码 这两个不常用
+
+    /*
+     * 请求方式
+     * get ：客户端向服务端获取一些数据【给的少拿得多】 chrome：8k moz：7k ie：2k  这是最大支持的大小，超出以后会被截断
+     * head：客户端获取服务端 的响应头信息
+     * delete：客户端删除服务端的一些信息
+     * put ： 客户端想服务端放置一些内容
+     * post ：客户端向服务端获取一些信息【给的多，拿得少】100kb
+     * option ： 客户端向服务端发送一些探测性的信息，如果有返回结果表示链接成功。例如axios这个ajax类库 就是首先通过 option想服务端发送跨域请求【cross domain 发送探测性信息】。
+     *
+     * 总结：不管是那种法式，都可以向服务端获取数据，发送请求，常用的就是get和post
+     *
+     * */
+    console.log(xhr);
+    /*
+     *
+     * xhr 他是一个实例，对象
+     * xhr.response 请求到数据之后的响应体，可以使任何格式
+     * xhr.responseText 返回时数据文本，可以使json数据也可以是xml数据格式
+     * xhr.responseXML  返回的是xml格式的数据
+     *
+     * onabort 中断ajax操作执行的方法
+     * onreadystatuschange 当状态改变执行的方法
+     * timeout  设置ajax请求的超时的时间
+     *
+     *
+     * readyState ajax准备的状态
+     * status  http状态码
+     * statusText 对http状态的一个描述
+     * withCredentials 是否允许ajax进行跨域 (false)不能
+     * open 打开一个url链接
+     * send 发送ajax请求
+     * overrideMimeType  重写MIME类型
+     * getAllResponseHeaders 获取所有的响应头
+     * getResponseHeader([key])  获取想用头中的某一个属性名对应的属性值
+     *
+     *
+     * */
+    //监听ajax准备的状态
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            /*
+             * xhr.readyState xhr的准备状态
+             * 0：UNSENT 表示刚创建ajax对象
+             * 1：OPENED 打开一个url地址连接
+             * 2.HEADERS_RECEIVED received 【收到】 发送了ajax请求，现在客户端已经收到了相应头的基本信息
+             * 3.LOADING 响应体正在返回的途中
+             * 4.DONE 收到响应体的信息，ajax请求结束了
+             *
+             *
+             * */
+            if (xhr.status === 200) {
+                /*
+                 * xhr.status => http状态码
+                 * 200：客户端成功接收到服务端的返回的数据
+                 * 301：永久重定向，当前域名地址已经永久跳转到另一个域名地址当中
+                 * 302：临时重定向，一般情况下当服务器超过他的加载符合范围，会重新跳转到一个新的服务器，一般用来解决负载均衡，或者我们一般的项目的图片、文件、其他的资料都放在其他的服务器当中
+                 * 304：加载缓存，一般我们请求一个页面，浏览器会默认将这个页面的全部信息缓存的本地当我们再次请求这个页面的时候，浏览器检测到输入的地址参数一样的话，会默认走缓存【加载更快】 ctrl+f5实现强制刷新 也可以清空缓存，或者服务器可以设置响应头的事件进行变更可以达到清除缓存
+                 *
+                 * ctrl+f5实现强制刷新 也可以清空缓存，或者每次请求都不走缓存的话，可以这样操作
+                 * xhr.open("get", 'TCP协议.html?_'+Math.random()', true)
+                 * xhr.open("get", 'TCP协议.html?_'+new Date().getTime()', true)
+                 *
+                 *
+                 * 307：临时重定向，针对的是http传输协议，一开始http=>https
+                 * 400：访问参数错误
+                 * 401：没有访问权限
+                 * 404：请求地址【资源】不存在
+                 * 413：客户端请求的文件超过服务端的最大承载的容量
+                 * 500：未知的服务端错误
+                 * 503 服务器超过最大的符合
+                 *
+                 * 注意：只要是5xx 都是服务端的问题 只要是页面4xx 都是前端的问题  2xx 和 3xx都可以表示请求成功的意思
+                 *
+                 * */
+                xhr.responseText// json数据和xml数据=> 字符串格式
+            } else {
+                console.log(xhr.status);//如果没有拿到信息，对当前状态码的描述
+            }
+
+        }
+    }
+    xhr.send()//send一般适用于post发送数据给服务端，如果get的话，我们需要通过url地址进行拼接发送，xhe.send(参数=>请求体)当执行send的时候，就表示当前这个ajax状态已经发送了
+    /*
+    *
+    * web前端性能优化 雅虎军规
+    * */
+</script>
