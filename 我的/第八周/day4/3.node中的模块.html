@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    /* 
+     shift + ctrl + p
+     
+
+     node中的模块【node本身属于模块化开发，他也是一个一个的模块组成的】，在node当中模块分为三种：
+     1.内置模块【安装node之后天生自带的模块】 fs http url path ...
+     2.第三方模块【别人开发好的模块，我们进行下载使用，通过npm包管理器去npm包管理器去npmjs.com下载】下载完之后，多出一个node_modules文件 例如： less jquery vue bootstarp...
+     3.自定义模块【自己写的js文件，当做一个模块来调用】
+
+     '跑环境'：跑环境又称部署环境
+     1.我们在开发项目的时候，会先执行npm init //形成一个模块清单，此时文件会多出一个文件【package.json】 
+      npm init 生成清单 npm init -y
+       【注意】：模块清单会默认区当前js父级文件夹的名称，所以需要注意
+          1.不要在清单中写注释
+          2.模块清单的名称不要有中文
+          3.模块清单的名称不要和安装的模块的名称相同
+          4.模块清单的名称不能大写
+          {
+          "name": "day4", //模块清单的名称
+          "version": "1.0.0",
+          "description": "",
+          "main": "index.js", //主文件
+          "scripts": { //运行脚本，通过npm text
+            "test": "echo \"Error: no test specified\" && exit 1"
+          },
+          "author": "wlj",
+          "license": "ISC"
+        }
+     2.我们可以通过 npm install xxx 默认安装到生产环境
+
+       dependencies //生产环境：上线的时候需要的模块
+       DevDependencies //开发环境：开发人员在编写项目，测试项目的时候使用的模块
+       npm install xxx || npm install --save //默认安装到生产环境
+       npm install xxx --save-dev | npm install xxx -D //将模块安装到开发环境
+       npm install xxx@1.11.3  //安装具体的模块
+
+       //yarn【包管理器】来自于facebook，特点是快
+       yarn add xxx 
+       yarn add xxx@1.11.3
+       yarn remove xxx
+       yarn install //跑环境
+
+       //brew【包管理器】
+
+       在本地生成一个文件 node_modules 这里面添加的都是我们安装的第三方模块
+       当我们本地的编写代码结束后，提交到远程共享给别人的时候，我们需要添加node_modules这个文件 ，我们可以创建一个忽略文件，.gitignore【他是一个隐藏文件】里面输入的不需要提交的内容
+
+       这样做的好处：提交速度快，别人下载代码变快
+       当别人拿到你的模块清单的时候，会将你模块挨个进行安装【npm install / yarn install】，这时方式就叫做跑环境
+
+
+       【自定义模块】
+       node规定每一个js都是一个模块，他们之间需要相互调用
+       运行 node node b.js
+       通过exports / require 命令进行导入导出
+
+       【导出】
+       var name = 'zf'
+       module exports xxx【对象】
+       exports.name = 'zf'
+
+       【导入】     
+       require('./详细的路径');
+       只有自定义模块有路径，第三方模块和内置模块没有路径【如果没有路径，会先取第三方模块，再取内置模块】
+
+
+
+       es6 当中的导入导出 【框架中会用到es6的导入导出】
+       【导出】
+       需要在script添加 type='module'这个属性，内嵌和外联都会添加
+       export 导出的是对象 {}
+       export var name = 'zf' | export finction fn(){}
+       export default //默认导出的内容
+       [导出]
+       import xxx 【变量名】 from '路径'
+       import * as xxx from '路径' //xxx就会变成对象 xxx.name xxx.fn
+       import {name,fn} from '路径' //结构赋值中的导入
+
+
+       练习题
+       a模块实现数组求和 a.js
+       b模块实现求和后取平均数
+       c模块实现输入一堆数字进行
+
+
+
+
+    
+    */
+  
+   
+   
+   
+</script>
