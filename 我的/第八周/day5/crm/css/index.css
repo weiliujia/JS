@@ -1,0 +1,53 @@
+body {
+    margin: 0；
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#box {
+    width: 800px;
+    border: 1px solid red;
+    padding: 30px;
+    margin: 30px auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+#box > a {
+    text-decoration: none;
+    background: rgba(8, 180, 60);
+    color: #fff;
+}
+
+#box header,
+ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#box header span {
+    flex: 1;
+    text-align: center;
+    background: rgb(56, 161, 202)
+}
+
+ul li span {
+    flex: 1;
+    text-align: center;
+}
+ul li {
+    line-height: 30px;
+}
+ul li:nth-child(even){
+     background: rgb(202, 168, 56)
+}
+ul li:hover{
+     background: rgb(3, 241, 35)
+}

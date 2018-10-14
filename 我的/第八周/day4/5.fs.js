@@ -58,4 +58,3 @@ fs.appendFile('./test/1.js', ';console.log("heihei")', 'utf-8', err => {
 
  var resd = fs.readFileSync('./test', 'utf-8');
  console.log(resd);
- 

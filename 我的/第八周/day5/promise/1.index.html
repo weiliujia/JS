@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //promise es6 中的一个类
+    //主要功能管控异步操作
+    //为什么使用promise;连续多个异步请求会形成多个回调地狱，不方便后期维护，会有很多的层级嵌套，代码不美观
+    //generter 函数 async await axios fetch 都是建立在promise的基础之上
+    //promise 当中三种状态 padding【初始化】 fulfilled【成功态】rejected【失败态】
+    //promise机制：当promise当中的异步程序发生成功或者失败，执行then【promise原型上的方法，供实例来调用】中相对性方法
+    //注意：promise当中的then方法本身是同步执行，里面的方法是异步执行
+
+/*   let p1= new Promise((resolve,reject)=>{
+        //直接同步执行也行
+        resolve(200);
+        reject(100);
+       // cb.fier()
+
+     }) //excutor
+
+     //then方法本身是同步执行的，蛋 是then当中的两个方法属于异步执行
+     p1.then(res=>{
+        console.log(res);
+     },rej=>{
+        console.log(rej);
+     }) */
+
+    let p1 = new Promise((resolve,reject)=>{
+    //直接同步执行也行
+    setTimeout(()=>{
+       Math.random()>0.5? resolve(200):reject(100);
+    },0)
+     
+       
+       // cb.fier()
+    
+    }) //excutor
+    
+    //then方法本身是同步执行的，蛋 是then当中的两个方法属于异步执行
+    p1.then(res=>{
+       console.log(res);
+    },rej=>{
+       console.log(rej);
+    })
+</script>
