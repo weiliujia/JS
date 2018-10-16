@@ -46,8 +46,8 @@ ul li {
     line-height: 30px;
 }
 ul li:nth-child(even){
-     background: rgb(202, 168, 56)
+     background: rgb(196, 190, 184)
 }
 ul li:hover{
-     background: rgb(3, 241, 35)
+     background: rgb(134, 243, 61)
 }

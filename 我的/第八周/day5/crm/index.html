@@ -12,6 +12,7 @@
 <body>
     <div id="box">
         <a href="add.html">增加新客户</a>
+        <input type="search" placeholder="请输入要搜索的内容" style="float:right" id='sou'>
         <header>
             <span>姓名</span>
             <span>年龄</span>
@@ -55,11 +56,38 @@
                     <span>${item.phone}</span>
                     <span>${item.address}</span>
                     <span>
-                      <a href="add.html">修改</a>
+                        <a href="add.html?id=${item.id}">修改</a>
                        <a href="javascript:;" id=${item.id}>删除</a>
                   </span>
                       </li>`
         })
-        list.innerHTML =str;
+        list.innerHTML = str;
     }
+    list.onclick = function (e) {
+        if (e.target.innerHTML === '删除') {
+            let id = e.target.getAttribute('id');
+            let flag = confirm('你确定要删除id是' + id + '内容吗？？？？');
+            if (flag) {
+                ajax({
+                    url: '/removeInfo?id=' + id,
+                }).then(res => {
+                    if (res.code === 0) {
+                        bindHTML(res.data);
+                    }
+                })
+            }
+        }
+    }
+    /* box.onclick = function (e) {
+        if (e.target.innerHTML === '请输入要搜索的内容') {
+            ajax({
+                url: '/souInfo?id=' + id,
+            }).then(res => {
+                if (res.code === 0) {
+                    bindHTML(res.data);
+                }
+            })
+
+        }
+    } */
 </script>
