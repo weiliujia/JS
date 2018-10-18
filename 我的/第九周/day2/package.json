@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap": "^3.3.7",
     "sortablejs": "^1.7.0",
     "vue": "^2.5.17"
