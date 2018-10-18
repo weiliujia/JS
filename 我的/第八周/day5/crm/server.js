@@ -109,19 +109,19 @@ let server = http.createServer((req, res) => {
         res.end(JSON.stringify(dataSuc));
     }
 
-    /* if(pathname === '/souInfo'){
-       let data = JSON.parse(fs.readFileSync(dataUrl, 'utf-8'));
-       let dataNew = {};
-       for (var i = 0; i < data.length; i++) {
-        if (data[i]['id'] == query.id) {
-            dataNew = data.splice(i, 1);
-            break;
-       }
+    if (pathname === '/souInfo') {
+        let data = JSON.parse(fs.readFileSync(dataUrl, 'utf-8'));
+        let dataNew = null
+        for (var i = 0; i < data.length; i++) {
+            if (data[i]['name'] == query.name) {
+                dataNew = data.splice(i, 1);
+                break;
+            }
+        }
+       /*  fs.writeFileSync(dataUrl, JSON.stringify(dataNew), 'utf-8'); */
+        dataSuc.data = dataNew;
+        res.end(JSON.stringify(dataSuc));
     }
-     fs.writeFileSync(dataUrl, JSON.stringify(dataNew), 'utf-8');
-     dataSuc.data = dataNew;
-     res.end(JSON.stringify(dataSuc));
-} */
 })
 
 server.listen(9895, () => {

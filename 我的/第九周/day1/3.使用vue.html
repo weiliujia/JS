@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- vue的语法，特有的小胡子语法，可以存放data数据中的属性名，返回结果是对应的属性值，还可以赋值，取值，三元运算符都可以在里面写 -->
+
+        <div v-cloak>
+            {{ary}}
+            {{name?'1':'0'}}
+            <!-- v-text=> innerText -->
+            <div v-text='ary'></div>
+            <!-- <div>
+                vue中的的面抖动
+                解决方法：1.v-cloak 2.v-text 
+            </div> -->
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    //el表示将某个标签变成vue可操控的标签,可以实现在指定的标签内容中可以写vue提供的语法，属性值相当于调用了querySelector
+    var vm = new Vue({
+        el: '#app',
+        //data存放的数据，并且将数据存放在实例上边
+        data: {
+            name: true,
+            ary: [1, 2, 1, 3, 5]
+        }
+    })
+    vm.$el = '#box'
+    //获取vm.$el
+    //设置元素 vm.$mount('#box');
+</script>

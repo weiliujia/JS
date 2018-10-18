@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="add">
+        <!-- .lazy 修饰符 @click.prevent .stop .self...-->
+        <!-- 如果写了v-model 不需要写value value就失效了 -->
+        <input type="text" v-model.lazy='text'>{{text}}<br>
+        <input type="number" v-model.number='number'>{{typeOf number}}<br>
+    </div>
+    <!-- 不能给option添加事件，select中是不需要value的，option中需要添加value -->
+    <select v-model='selected'>
+        <option value="" disabled>请选择</option>
+        <option :value="O" v-for='O in options'>{{O}}</option>
+    </select>
+</body>
+
+</html>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        //输入框 textarea input
+        //下拉菜单
+        //checkbox
+        //radio
+        el: '#add',
+        data: {
+            selected: '', //如果是多选应该采用数组的方式
+            options: ['吃饭', '睡觉', '打豆豆'],
+            number: 555,
+            text: 'laksaj'
+        }
+    })
+</script>

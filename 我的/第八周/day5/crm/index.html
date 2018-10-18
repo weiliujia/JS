@@ -12,7 +12,7 @@
 <body>
     <div id="box">
         <a href="add.html">增加新客户</a>
-        <input type="search" placeholder="请输入要搜索的内容" style="float:right" id='sou'>
+        <input type="search" placeholder="请输入要搜索的内容" style="float:right" id='sou' value="">
         <header>
             <span>姓名</span>
             <span>年龄</span>
@@ -63,7 +63,7 @@
         })
         list.innerHTML = str;
     }
-    list.onclick = function (e) {
+    list.onkeydown = function (e) {
         if (e.target.innerHTML === '删除') {
             let id = e.target.getAttribute('id');
             let flag = confirm('你确定要删除id是' + id + '内容吗？？？？');
@@ -78,16 +78,27 @@
             }
         }
     }
-    /* box.onclick = function (e) {
-        if (e.target.innerHTML === '请输入要搜索的内容') {
+    sou.onkeydown = function (e) {
+
+        e = e || window.event;
+        if (sou.value !== '' && e.keyCode === 13) {
+            var soun = sou.value;
             ajax({
-                url: '/souInfo?id=' + id,
+                url: '/souInfo?name=' + soun,
             }).then(res => {
                 if (res.code === 0) {
                     bindHTML(res.data);
                 }
             })
-
         }
-    } */
+        if (sou.value.length ==1 && e.keyCode === 8) {
+            ajax({
+                url: '/getList',
+            }).then(res => {
+                if (res.code == 0) {
+                    bindHTML(JSON.parse(res.data))
+                }
+            })
+        }
+    }
 </script>

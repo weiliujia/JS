@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- v-html 慎重使用（文本尽量是安全的）
+         v-text 可以防止闪烁{{}}
+         v-bind 绑定属性的 动态绑定：value
+         v-if  dom是否显示
+         v-if-else dom是否显示
+         v-show dom是否显示
+         v-on @符号 
+         v-model 双向绑定
+         [v-cloak] [v-cloak]{}
+         v-for 循环 循环对象 循环数组 数字 字符串（key你可以不用加 vue会自动给你去优化）key（必须指定 key的问题 尽量不要使用数组的索引）
+         v-once 之渲染一次
+         v-pre  可以不去渲染某一块 <v-pre>{{}}</v-pre>
+     -->
+    <div id="app">
+        <input type="text" v-model='name'>
+        <div>{{name}}</div>
+        <!-- v-once第一次进行加载，以后数据改变不会发生变化 -->
+        <div v-once>{{name}}</div>
+        <!-- v-html =>innerHTML 可以识别元素标签 -->
+        <div v-html="p"></div>
+        <!-- v-html =>innerTEXT 可以识别文本 -->
+        <div v-text="p"></div>
+        <!-- v-bind表示动态属性，让标签可以接受vue中的属性 -->
+        <a v-bind:href="url">百度</a>
+        <!-- ：直接用：表示v-bind的缩写形式 -->
+        <a :href="url">百度</a>
+        <!-- v-if将元素从结构中移除【removeChild 】v-show属于通过样式将元素隐藏【display:none】 -->
+        <!-- 如果是频繁让元素进行显示隐藏，我们可以使用v-show，否则可以使用v-if，这样坐会减少性能的消耗 -->
+
+        <br>
+        你可以控制输入框让if-else显示或yincang【1/2】
+        <div v-if='name == 1'>{{name}}</div>
+        <div v-else-if='name==2'>{{ary}}</div>
+        <div v-else v-html>{{p}}</div>
+        <!-- v-show -->
+        <input type="checkbox" v-model='boo'>我们同来让v-show显示或隐藏
+        <div v-show='boo'>{{name}}</div>
+
+        <!-- v-on:事件 -->
+        <div v-on:click='fn'>我是</div>
+        <div @click='fn($event,1)'>我是师姐</div>
+        <!-- v-for:循环谁就给谁加v-for -->
+        <ul>
+            <!-- forEach => item项 index索引 -->
+            <!-- 对象有三个参数 value，key，index -->
+            <!-- 数组有两个参数 item index -->
+            <li v-for='(item,index,i) in obj'>
+                {{item}}...........{{index}}..........{{i}}
+
+                <!-- <div v-for='i in item'>{{i}}</div> -->
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            name: 'dididile',
+            p: '<p>123</p>',
+            url: 'http://www.baidu.com',
+            boo: true,
+            ary: [1, 2, 5, 69, 55],
+            num: 5,
+            obj: {
+                name: 'zf',
+                age: 8,
+                sex: 'nan'
+            },
+            //data对象中的数据都放在实力上，也就是this上，可以直接进行调用，例如this.xxx
+            //一般情况下metheds放入是所有的函数，这里面函数全是vue的实例
+        },
+        methods: {
+            fn() {
+                //console.log(this);
+                this.boo = !this.boo
+            }
+        }
+    })
+</script>

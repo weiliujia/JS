@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{name}}
+        <!-- 只有表单元素可以直接操作数据，比如input textarea selscted checkbox redio-->
+        <!-- 通过 v-model 显示数据 name的值 -->
+        <!-- 我们可以通过input输入框将里面的值进行改变，又因为v-model将输入框当中的值和vue数据中的值相互绑定，所以我们修改input框中的值直接会影响数据【data】当中的值 -->
+        <input type="text" v-model='name'>
+
+    </div>
+    <input type="text" id="input">
+</body>
+
+</html>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            name: 'zf',
+        }
+    })
+    /* 
+      mvvm model view viewmodel 双向数据邦丁，数据当中的值发生改变，直接会显示到页面中，当页面当中的值改变之后，数据的值也会相对应的改变
+
+      在vue中我们可以通过vue指令 v-model 实现双向数据绑定
+      
+       双向数据绑定是通过 Obejct.defineProperty(对象，属性名，选项{})
+
+    */
+    var obj = {};
+    var temp = {};
+    //ie8~ 不支持，vue不兼容低版本浏览器
+    Object.defineProperty(obj, 'name', {
+        /*  value: 1, */
+        //获取值得时候会执行这个方法
+        get(val) {
+            // console.log(1);
+            return temp['name']
+        },
+        //设置值得时候会执行这个方法
+        set(val) {
+            temp['name'] = val;
+            input.value = val
+            // return val
+        }
+    })
+    // obj.name = 2
+    input.value = obj.name;
+    input.oninput = function () {
+        obj.name = this.value;
+    }
+</script>
