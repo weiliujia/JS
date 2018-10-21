@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script src="./node_modules/axios/dist/axios.js"></script>
+<script>
+    var url = ' https://www.easy-mock.com/mock/5ab497e674cb3a490381870f/api';
+    var getUrl = '/news/list';
+    var postUrl = '/order/list'
+    //设置通用的头部地址
+    axios.defaults.baseURL = url;
+
+    //设置通用的超时时间
+    axios.defaults.timeout = 5000;
+
+    //设置通用的头部信息 //将post发送的参数设置为url-encoded
+    axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+    axios.defaults.headers['name'] = 'zf';
+
+    //axios中的拦截器
+    //请求拦截器=》当我请求发送http请求的时候，会对我的请求做一个处理
+    axios.interceptors.request.use(res=>{
+        //每次请求在请求头当中添加一个token
+        return res
+    },rej=>{
+        Promise.reject(rej);
+    })
+
+
+
+    //相应拦截器=》当我接受到服务端的相应的时候，会对响应头和响应体做一个处理，再返回个回调函数
+
+    axios.get(getUrl).then(res => {
+
+    })
+    axios.post(postUrl, {
+        name: 'zf'
+    }).then(res => {
+
+    })
+</script>

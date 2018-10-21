@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-clolak]{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div v-text='name'></div>
+        <!-- 表单元素当中的标签，操作的时候影响数据的变化 -->
+        <!-- <div v-model='model'></div> -->
+
+        <!-- t通过表单元素设置视图，并影响数据 -->
+        <input type="text" v-model.lazy='model'>{{model}}
+        <!-- 动态绑定属性 -->
+        <a v-bind:href="url">baidu</a>
+        <!-- 防止页面闪烁 -->
+        <div v-cloak>{{model}} </div>
+        <!-- v-on 表示时间 通过@  必须放函数名-->
+        <button v-on:click='flag =!flag'>{{flag?'佩奇':'乔治'}}</button>
+        <button v-on:click='flag?fn():fn1()'>{{flag?'佩奇':'乔治'}}</button>
+        <!-- 在vue当中添加事件，加括号和不加括号的区别在于是否要给函数传参 -->
+        <button v-on:click='fn3()'>事</button>
+        <button v-on:click='fn3($event,10,100)'>件</button>
+        <button v-on:click='fn3(10,100)'>源</button>
+        <div onclick="alert(1)">1</div>
+        <!-- 在vue事件中添加修饰符 -->
+        <!-- .stop阻止冒泡 -->
+        <!-- .self手动阻止冒泡 -->
+        <!-- .prevent 阻止默认事件 -->
+        <div @click.self='fn'>
+            <a href="http://www.zhufengpeixun.com" @click.prevent.stop='fn1'>珠峰</a>
+            <div @click.stop='fn3'>fn2</div>
+            <div @click.self='fn4'>fn4</div>
+        </div>
+        <input type="text" @keyup.enter='fn4' value="">
+        <!-- 除了添加按键的别名，还可以添加keyCode码 -->
+        <input type="text" @keyup.13='fn4' value="">
+        <!-- v-if  v-else-if  v-else -->
+
+        <!-- template是一个不可见的包裹元素，一般用于惩戒v-if判断用的 -->
+        <template v-if='flag'>
+            <div v-text='model'></div>
+            <!-- 组件 -->
+        </template>
+
+        <!-- 条件多个的时候用这个 -->
+        <!-- <div v-else-if='!flag'>
+            小狮子
+        </div> -->
+        <!-- 条件只有一个的时候用，直接else -->
+        <template v-else>
+            小老虎
+        </template>
+        <!-- v-show不支持template，因为他要控制元素的样式 -->
+        <template v-show='flag'>
+            我是瘦
+        </template>
+        <!-- v-for 你想要循环那个标签，就给那个标签添加指令-->
+        <ul>
+            <li v-for='(item,index) in arr'>{{item.name}}
+                <ul>
+                    <li v-for='itemColor in item.color'>{{itemColor}}</li>
+                </ul>
+            </li>
+        </ul>
+        <input type="checkbox" @change='checkAll' v-model='chackA'>全选
+        <div v-for='(item,index) in arr'>
+            <input type="checkbox" v-model='chacks[index]' @change='checkOne'>{{item.name}}
+        </div>
+        
+
+    </div>
+</body>
+
+</html>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    var obj = {
+        name: 'xqxdd'
+    }
+    var vm = new Vue({
+        el: '#app',
+
+        data: {
+            //data当中存放的键值对数据，全部都放在实例当中
+            name: '',
+            obj,
+            model: '小猪菲芘',
+            url: 'https://www.baidu.com',
+            flag: true,
+            arr: [{
+                    name: '苹果苹果',
+                    color: ['red', 'yellow', 'green', ]
+                },
+                {
+                    name: '香蕉',
+                    color: ['red', 'blue', 'green', ]
+                },
+                {
+                    name: '西瓜',
+                    color: ['red', 'black', 'green', ]
+                }
+            ],
+            chackA: false,
+            chacks: [false, false, false],
+
+        },
+        methods: {
+            //专门用来放方法的，在methods的函数都是普通函数，因为确定this是实例，想要调取实例上的数据
+            fn() {
+                alert('佩奇')
+            },
+            fn1() {
+                alert('乔治')
+            },
+            fn3(key1, key2) {
+                console.log(key1, key2);
+
+            },
+            fn4(val) {
+                console.log(val);
+                if (val.srcElement.value) {
+                    alert('小猪佩奇')
+                }
+            },
+            checkAll() {
+                //console.log(this.chackA);
+                for (let i = 0; i < this.chacks.length; i++) {
+                    this.chacks[i] = this.chackA
+                }
+            },
+            checkOne() {
+                //全部选择为true checka为true，
+                //当里边有意向为false chacka都不能为true
+                // for (var i = 0; i < this.chacks.length; i++) {
+                //     //如果数组中都为false，则为全选为false
+                //     if (!this.chacks[i]) { //当子选项都为true的时候，判断为false
+                //         this.chacka = false;
+                //         return
+                //     }
+                // }
+                // this.chacka = true
+
+                this.chackA = this.chacks.every(item => item)
+            }
+        },
+        computed: {
+            //一个plus属于get方法
+            //plus函数执行条件 
+            //1.哈数当中有实例所对应的数据发生变化，触发函数执行
+            //2.必须在页面当中添加函数名plus{{plus}};
+            //plus当中的reyurn 让页面显示相对应的内容，不谢的话，页面为空
+            //computed计算属性，属于多对一进行展示，只要函数中有有实例数据发生改变，当前函数就会执行，【其他数据发生改变，就不会对它造成影响】return的结果就是页面展示的效果
+            //注意：页面一刷新就会执行一边里边的方法
+            //一般用来计算多个
+            plus() {
+                console.log(this.flag);
+                console.log(1);
+            },
+
+            plus: {
+                get(val) {
+                    //get当中的参数是实例本身
+                    //get中的return我们常用
+                    this.flag;
+                    console.log(val == this);
+                },
+                //set属于设置，不常用
+                set(val) {
+                    //set中的val属于设置的那个值
+                    //set中的return没有意义
+                    //set方法是plus调用的
+                    //set方法触发条件，只有再给对象名puls设置的时候才会触发
+                    this.url = val;
+                }
+            }
+        }
+    })
+</script>
