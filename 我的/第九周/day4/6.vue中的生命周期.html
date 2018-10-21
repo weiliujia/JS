@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+
+</html>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'zf'
+        },
+        beforeCreate() {
+            debugger
+        },
+        Created() {
+            //data数据加载之后，可以被ajax携带发送【post】 =》{name:this.msg}
+            //创建完实例之后，我们一般情况下在这个函数当中发送ajax请求
+            debugger
+        },
+        //会进行判断，判断是否有el 或者$mount挂在元素
+        //如果有的话【挂载元素】在进行判断，是否有内部的template属性【替代根元素】，或者外部的html标签【#app】作为模板【template】
+        //办保证有了以后进行dom渲染
+
+        //保证渲染成功执行这个钩子函数
+        beforeMount() {
+
+        },
+        //挂载元素,有了根元素
+        mounted() {
+            //在这个函数当中，我们卡哇伊操作这个根元素内部的标签
+            //同城我们在这个函数中操作dom
+            this.$refs.xxx.style.color = 'red';
+            //dom-diff:计算让dom操作性能小号的更少
+        },
+        //所有数据发生改变都会触发，可以用watch代替
+        //数据发生改变，执行这个方法
+        beforeUpdate() {
+
+        },
+        //当虚拟DOM 重新渲染之后，在执行upadated
+        upadated() {
+
+        },
+        //实例销毁之前
+        beforeDestroy() {
+            //清楚一些绑定的事件，定时器，变量对内存
+
+        },
+        //【移除所有的子组件、坚挺着、事件】实例销毁之后
+        destroyed() {
+            //数据发生改变，页面不能识别
+        }
+
+    }).$mount('#app');
+    vm.$destroy()//销毁实力
+    /* 
+              vue创建也有声明周期的过程，包括数据渲染，变异模板，实力挂载dom元素，更新数据，卸载根元素，都会触发一系列 生命周期不同时期的钩子函数
+
+
+               beforeCreate Created  //实例初始化，和创建之后
+               beforeMount mounted  //实例挂载dom之前，挂载dom之后
+               beforeUpdate updated  //数据更新之前 ，数据更新之后
+               beforeDestroy  destroyed //实例销毁之前 实例销毁之后
+
+
+              //创建vue的过程
+              1.会给实例添加方法
+              
+    
+    
+             */
+</script>

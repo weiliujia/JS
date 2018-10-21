@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .a {
+            font-size: 30px;
+        }
+
+        .b {
+            color: blueviolet;
+        }
+
+        .c {
+            background: lightcyan;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="a b c">小</div>
+        <div :class="classAry"> 猪</div>
+        <div :class='{a:classA}'>佩</div>
+        <div :class='computedClass'>奇</div>
+        <div style='fontSize:30px'>佩奇</div>
+        <div :style='styleA'>乔治</div>
+        <div :style='styleB'>佩奇VS乔治</div>
+        <div :style='{color:"yellow", ...styleB}'>佩奇VS乔治</div>
+    </div>
+</body>
+
+</html>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    /* 
+    select
+    radio
+    checkbox
+ */
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            classAry: ['a', 'b', 'c'],
+            classA: true,
+            styleA: {fontSize:'30px'},
+            styleB: {
+                fontSize: '30px',
+                background: 'red',
+            },
+            styleC: {
+                background: 'lightcyan'
+            }
+        },
+        computed: {
+            computedClass() {
+                return Math.random() > 0.5 ? 'a' : 'b'
+            }
+        }
+    })
+</script>
