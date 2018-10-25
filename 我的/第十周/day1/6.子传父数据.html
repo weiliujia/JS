@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{name}}
+        <!-- 使用冒号将属性值变成动态冒号 -->
+        <!-- 自定义事件相当于发布订阅中的on方法 -->
+        <!-- 将父级的方法订阅到son-data事件当中 -->
+        <!-- 订阅结束后，我们同过$emit-->
+        <child :data='name' @son-data='fatherFn'>
+        </child>
+    </div>
+    <template id='box' v-for=''>
+        <!-- temaplate里面定义的标签，有且只能有一个 -->
+        <div @click='childFn'>
+            {{data}}
+            <p v-for='item in arr' ref='aryP'>{{item}}</p>
+        </div>
+    </template>
+</body>
+
+</html>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    /* 
+       在vue中属于单项数据流，只能通过父级想子级传输数据，通过属性props来设置
+       想要实现子级向父级传输数据，我们需要调用父级的方法，将参数【子级的参数】回传【父级的方法执行,形参是队形子级的数据】
+     
+     */
+    let child = {
+
+        data() {
+            return {
+                arr: [1, 2, 3]
+            }
+        },
+        //我们可以同过props拿到父组件穿过来的值data，这时候，data就变成子组件child的一个属性，可以通过this.data拿到这个值
+        //props:['data'],
+        //如果props是一个对象，我们可以对父级传递的数据进行校验，相当于拦截器
+        props: {
+            data: {
+                //type:Number,
+                type: [Number, String, Boolean, Function, Object, Array, Symbol],
+                default: 'zf', //如果没穿用default，传了就用穿的值
+                //必须传值，不穿报错
+                required: true,
+                validator(value) {
+                    //通过一个方法对传入的值做校验，返回true表示成功，可以传入，返回false，表示失败，会报错
+                    return value.length === 5
+                }
+            }
+        },
+        template: '#box',
+        methods: {
+            childFn() {
+                console.log(1);
+                this.$emit('son-data', this.msg)
+
+            }
+        }
+    }
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            name: 'china'
+        },
+        //注册
+        mounted() {
+
+
+        },
+        methods: {
+            //子级去触发，将参数回传
+            fatherFn(val) {
+                //将子级传输过来的数据，父级拿来改变自己的状态
+                this.name = val
+            }
+        },
+        //template:"#box",
+        components: {
+            child
+        }
+    })
+    /* 
+     想要将父级的数据传递给子组件，通过子组件的标签进行传递
+    
+    */
+</script>

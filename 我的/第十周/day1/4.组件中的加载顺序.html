@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <parent></parent>
+    </div>
+    <template id='box' v-for=''>
+        <!-- temaplate里面定义的标签，有且只能有一个 -->
+        <div>
+            <p v-for='item in arr' ref='aryP'>{{item}}</p>
+        </div>
+    </template>
+</body>
+
+</html>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    /* 
+       加载vue的时候，会先加载子组件当中的dom,然后再去加载父级组件当中的元素，渲染dom属于异步渲染
+       为什么先加载子组件的dom再去加载父组件的dom，因为在父组件当中可能去操作子组件中的dom，如果子组件没有加载结束，父组件就拿不到子组件的元素
+     
+     */
+    let parent = {
+        mounted() {
+            console.log('我是子');
+            this.arr.push(5, 6);
+
+            console.log(this.$refs.aryP.length); //length 3
+            //渲染dom属于异步操作
+            //nextTick:当所有的dom元素加载完之后，才会去执行这个方法，而且它也是异步执行
+            //总结：只要想操作dom，我们可以在$nextTick回调函数中操作
+            this.$nextTick(function () {
+                console.log(this.$refs.aryP.length);
+            })
+
+        },
+        //data 不是一个对象，防止其他vue实例调用的时候，只要组件当中发生改变，其他的vue实例也会受到影响
+        data() {
+            return {
+                arr: [1, 2, 3]
+            }
+        },
+        template: '#box'
+    }
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            name: 'china'
+        },
+        //注册
+        mounted() {
+            //挂载玩根元素就会执行这个方法
+            //this
+            //官网：mounted方法执行不能保证所有的dom都渲染完成，不能保证所有的子组件都加载完成，需要搭配使用nexteTick方法来操作dom
+            //一般情况下是我们不会再vue选项当中直接使用实例vm，我，哦们会用户this
+            /* 
+              this.$el //拿到挂在的元素
+              $nextTick  //所有dom加载完之后执行
+              $mount //设置挂在的根元素
+              $data //拿到实例上的数据
+              $set //设置实例的上的数据
+              $watch //监听书库
+              $on //订阅
+              $emit //发布
+              $opytions //拿到实力上的属性
+             */
+            
+            console.log(vm === this); //false
+            this.$nextTick(function () {
+                console.log(vm === this);
+            })
+
+            console.log('我是fu');
+        },
+        //template:"#box",
+        components: {
+            parent
+        }
+    })
+</script>

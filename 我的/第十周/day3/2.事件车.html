@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <brother1></brother1>
+        <brother2></brother2>
+    </div>
+
+</body>
+
+</html>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    /*  事件车仅限于也无力偶极少的的数据传输
+      事件车【eventBus】：它是通过发布订阅的模式，将数据共享到另一个vue的实例上，调用的时候直接拿去即可
+      【业务逻辑多的时候不建议使用】
+   */
+
+    let vm = new Vue()
+    let brother1 = {
+        data() {
+            return {
+                msg: '恶心'
+            }
+        },
+        created() {
+            vm.$on('mountan', this.where)
+        },
+        template: '<div>佩奇{{msg}}<button @click="fn">变恶心吧</button></div>',
+        methods: {
+            where(val) {
+                this.msg = val
+            },
+            fn() {
+                vm.$emit('greatWall', '恶心')
+                vm.$emit('mountan', '恶心')
+            }
+        }
+    }
+    let brother2 = {
+        created() {
+            vm.$on('greatWall', this.where)
+        },
+        data() {
+            return {
+                msg: '很酷'
+            }
+        },
+        template: '<div>乔治{{msg}}<button @click="fn">不行很酷!</button></div>',
+        methods: {
+            where(val) {
+                this.msg = val
+            },
+            fn() {
+                vm.$emit('mountan', '很酷')
+                vm.$emit('greatWall', '很酷')
+
+            }
+        }
+    }
+    new Vue({
+        el: '#app',
+        data: {
+            msg: 100
+        },
+        components: {
+            brother1,
+            brother2
+        }
+    })
+</script>

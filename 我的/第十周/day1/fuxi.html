@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<div id="app">
+    <template v-if='1===true'></template>
+</div>
+
+</html>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    /* 
+      库的原理都是操作dom
+      vue提供的虚拟dom
+      //虚拟dom => 文档碎片【操作dom的数量】
+      //虚拟dom => 在vue中，操作dom都会被记录在虚拟dom中，最后一个姓将虚拟dom映射到真是的dom当中
+      //dom-diff 计算，只计算出dom发生改变的元素，在进行替换【算法】
+      //我们需要在vue提供的挂在元素中进行操作
+
+      //vue这个框架的思想，双向数据绑定
+      //双向数据绑定：页面【视图】和数据【本地的数据】进行相互连接，作用是：1.本地的数据显示到页面 2.页面操作之后，更改本地数据
+      //Object.defineProperty(obj,'name',{
+          value:'',
+        get(){
+            return xxx
+        },
+        set(val){
+
+        }
+      })
+      //如果想要利用好vue这个框架，需要按照vue提供的语法进行操作
+      //vue 提供的指令，方便操作元素【单个标签】
+      //vue 提供了组件，将整体的标签元素，按照我们的需求进行设置【多个标签】
+      //组件就是一个自定义的标签元素，2种：一种是vue提供的，一种是我们自己设定的
+      //template tansition components slot tansition-group keep-live
+      //自定义 child grendFather...
+  
+      //解构=>vue 提供的标签方法.指令
+      //方法=> vue 理工的选项 methods 里面
+      
+      拿到数据操作数据，我们可以通过vue提供的data选项，将数据快速展示到页面中
+      {{vue的数据名称}}
+      
+      注意的是：vue提供的指令以及方法都是写在行内
+
+      在 vue中的提供了一些操作数据的方法【放在vue的选项中】filter watch componed data
+
+      操作元素，$refs[绑定到实例上面] this.$refs【拿到页面中所有的添加ref属性的元素】
+      注意：
+      1.拿到循环【v-for】取到的值是一个数组；
+      2.如果多个标签元素，都是相同的ref属性，只取第一个元素
+      3.如果ref添加在子组件中，我们可以通过它来拿到子组件中的数据，方法，dom元素
+
+
+      tempalte：模板=>用来当做当前组件的模板，如果没有组件接受，他就是一个空的包裹元素
+      1.如果vue实例接受template选项，他就会替换vue的根元素
+      2.如果其他组件接受template选项，他是组件的内的标签结接受
+
+      vue指令：一般用与行内标签上
+      v-html/v-text
+      v-model => 主要作用于表单元素上【实现双向数据绑定】
+      v-show  => 同过样式=控制元素消失及显示
+      v-if / v-else / v-if-else => 条件判断
+      v-once => 只操作一次
+      v-on => 事件 @元素当中显示行内事件
+      v-bind=> :动态属性=>表示属性值是一个变量 
+      v-for => 循环元素=>作用于要循环显示的标签元中
+
+      注意:指令后面都可以添加修饰符， 
+      事件修饰符 .prevent .stop .self .capture .once
+      键盘按键修饰符：.enter .space .up .down .left .ctrl // 13 8 37 38 39...
+      表单指令修饰符： .lazy .number .trim
+
+      vue 的自定义指令，通过vue实力上的选项方法，directive来实现，在对象中可以扩展自定义指令，一般情况下是用来【重复操元素】
+
+
+      【vue的生命周期】
+      vue在执行加载页面的时候，会单独加载js中的vue实例，在加载vue实例的时候，会根据不同的时间【从vue创建到vue销毁】执行相对应的钩子函数的方法
+      beforeCreate //刚初始化vue
+      created  //会执行到vue当中数据【data】，发送ajax
+      beforeMount  //
+      mounted  //dom元素加载完成【dom渲染是异步的】操作dom /拿到$refs
+      beforeUpdate //全局更新数据之前
+      updated //全局更新数据之后 //watch => 监听一个数据
+      beforeDestroy //卸载vue的实例之前
+      destroyed //卸载vue的实例之后 //销毁实例/销毁组件【组件消失属于销毁】的时候用的
+
+
+      
+
+      
+      
+    
+    */
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: '',
+        },
+        created(){
+
+        }
+
+    })
+</script>

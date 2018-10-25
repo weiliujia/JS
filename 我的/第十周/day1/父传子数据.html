@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{name}}
+        <!-- 使用冒号将属性值变成动态冒号 -->
+        <child :data='name'>
+        </child>
+    </div>
+    <template id='box' v-for=''>
+        <!-- temaplate里面定义的标签，有且只能有一个 -->
+        <div>
+            {{data}}
+            <p v-for='item in arr' ref='aryP'>{{item}}</p>
+        </div>
+    </template>
+</body>
+
+</html>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    /* 
+       加载vue的时候，会先加载子组件当中的dom,然后再去加载父级组件当中的元素，渲染dom属于异步渲染
+       为什么先加载子组件的dom再去加载父组件的dom，因为在父组件当中可能去操作子组件中的dom，如果子组件没有加载结束，父组件就拿不到子组件的元素
+     
+     */
+    let child = {
+
+        data() {
+            return {
+                arr: [1, 2, 3]
+            }
+        },
+        //我们可以同过props拿到父组件穿过来的值data，这时候，data就变成子组件child的一个属性，可以通过this.data拿到这个值
+        //props:['data'],
+        //如果props是一个对象，我们可以对父级传递的数据进行校验，相当于拦截器
+        props:{
+            data:{
+                //type:Number,
+                type:[Number,String,Boolean,Function,Object,Array,Symbol],
+                default:'zf',//如果没穿用default，传了就用穿的值
+                //必须传值，不穿报错
+                required:true,
+                validator(value){
+                    //通过一个方法对传入的值做校验，返回true表示成功，可以传入，返回false，表示失败，会报错
+                    return value.length===5
+                }
+            }
+        },
+        template: '#box',
+        methods:{
+
+        }
+    }
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            name: 'china'
+        },
+        //注册
+        mounted() {
+
+    
+        },
+        //template:"#box",
+        components: {
+            child
+        }
+    })
+    /* 
+     想要将父级的数据传递给子组件，通过子组件的标签进行传递
+    
+    */
+</script>

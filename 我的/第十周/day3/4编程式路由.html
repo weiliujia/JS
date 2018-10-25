@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 路由匹配的组件显示在这 -->
+        <!-- <a href="#/home">首页</a>
+        <a href="#/list">列表</a> -->
+
+        <router-link to='/home'>首页</router-link>
+        <router-link to='/list'>列表页</router-link>
+
+
+        <router-view></router-view>
+    </div>
+
+</body>
+
+</html>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<!-- vue-router不许在vue下面 要保持依赖关系 -->
+<script src="./node_modules/vue-router/dist/vue-router.js"></script>
+
+<script>
+    //创建两个组件
+    let home = {
+        template: '<div>首页<button @click="fn">去列表页</button></div>',
+        methods: {
+            fn() {
+                this.$router.push('/list') //让页面强制回到某个路径
+                //this.$router.back() //上一个页面
+                ///this.$router.go(-1)//上一个路径
+                //this.$router.replace('/list')//将当前路径进行替换并跳转
+            }
+        }
+
+
+    }
+    let list = {
+        template: '<div>列表页<button @click="fn">返回到首页</button></div>',
+        methods: {
+            fn() {
+                this.$router.push('/home') //让页面强制回到某个路径 
+                // this.$router.back() //上一个页面
+                //this.$router.go(-1)//上一个路径
+            }
+        }
+
+    }
+    let errer = {
+        template: '<div>404</div>',
+    }
+    //创建组件所对应的映射表，访问什么路径跳转什么组件
+    let routes = [{
+            path: '/',
+            component: home
+        },
+        {
+            path: '/home',
+            component: home
+        },
+        {
+            path: '/list',
+            component: list
+        },
+        {
+            path: '/404',
+            component: errer
+        },
+        // {
+        //     path: '*',
+        //     component: home //虽然可以在错误的情况下好转到首页，但是路劲没变，我们西游网用户输入错误的时候，刘静发生改变
+        // },
+        {
+            path: '*',
+            redirect: '/404' //用户输入网址错误的时候，自动跳转到404页面，而且路径也会改变
+        }
+
+    ]
+
+    //将路由的映射表放入vue-router提供的自定义类中
+
+    let router = new VueRouter({
+        routes: routes,
+        //mode:'history',//h5提供的方法，history.pushState()，不能回车跳转，只有上线的时候，才会用到
+        linkActiveClass: 'active',
+    })
+    new Vue({
+        el: '#app',
+        /*   components: {
+              home,
+              list
+          }, */
+        router //只要router在选项中现价，组件都可以使用 $router这个方法
+    })
+</script>
