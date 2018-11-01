@@ -1,5 +1,5 @@
 
-let Promise = require('./promise11')
+let Promise = require('./promise13')
 
 let p1 = new Promise((resolve,reject)=>{
     setTimeout(() => {
