@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="title"></div>
+    <div id="content"></div>
+    <script>
+        let title = document.getElementById('title');
+        let content = document.getElementById('content');
+
+        let state = {
+            title: {
+                color: "red",
+                text: "这是标题小猪佩奇"
+            },
+            content: {
+                color: "blue",
+                text: "这是一段话我是乔治"
+            }
+        }
+        //渲染标题和字体颜色
+        function renderTitle() {
+            title.innerHTML = state.title.text;
+            title.style.color = state.title.color
+        }
+        //渲染内容和字体颜色
+        function renderContent() {
+            content.innerHTML = state.content.text;
+            content.style.color = state.content.color
+        }
+
+        function renderApp() {
+            renderTitle();
+            renderContent()
+        }
+        renderApp()
+        //dispath：用来更改状态的，派发，
+        //在react把dispatch派发的类型定义成一个变量
+        const CHANGE_TITLE = "CHANGE_TITLE"
+
+        function dispatch(action) {
+            switch (action.type) {
+                case CHANGE_TITLE:
+                    state = { ...state,
+                        title: { ...state.title,
+                            text: action.text
+                        }
+                    }
+            }
+
+        }
+        setTimeout(function () {
+            dispatch({
+                type: CHANGE_TITLE,
+                text: "猪八戒"
+            })
+            renderApp()
+        }, 1000)
+    </script>
+</body>
+
+</html>

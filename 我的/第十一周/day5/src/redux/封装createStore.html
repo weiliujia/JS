@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="title"></div>
+    <div id="content"></div>
+</body>
+
+</html>
+<script>
+    let title = document.getElementById('title');
+    let content = document.getElementById('content');
+    const CHANGE_TITLE = "CHANGE_TITLE"
+
+    function creatrStore(reducer) {
+        let state;
+            let getState = () => JSON.parse(JSON.stringify(state));
+            //这个数组容器存储了订阅的方法
+           let listeners = [];
+           let subscribe=(fn)=>{
+           listeners.push(fn);
+           return ()=>{
+               listeners = listeners.filter((item,index)=>{return item!==fn})
+           }
+        }
+        function dispatch(action) {
+            state = reducer(state, action);
+            listeners.forEach((item,index)=>{item()})
+        }
+       
+         dispatch({});
+         //有一个订阅的方法，只要调用一次dispatch，就会执行以下订阅好的函数
+       
+        return {
+            getState,
+            dispatch,
+subscribe
+        }
+    }
+    let inieState = {
+        title: {
+            color: "red",
+            text: "这是标题小猪佩奇"
+        },
+        content: {
+            color: "blue",
+            text: "这是一段话我是乔治"
+        }
+    }
+
+    function reducer(state = inieState, action) {
+        switch (action.type) {
+            case CHANGE_TITLE:
+                return { ...state,title: { ...state.title, text: action.text}}
+        }
+        return state
+    }
+
+    let store = creatrStore(reducer)
+
+
+    //渲染标题和字体颜色
+    function renderTitle() {
+        title.innerHTML = store.getState().title.text;
+        title.style.color = store.getState().title.color
+    }
+    //渲染内容和字体颜色
+    function renderContent() {
+        content.innerHTML = store.getState().content.text;
+        content.style.color = store.getState().content.color
+    }
+
+    function renderApp() {
+        renderTitle();
+        renderContent()
+    }
+    renderApp()
+    let f = store.subscribe(renderApp);
+    f();
+    setTimeout(function () {
+        store.dispatch({
+            type: CHANGE_TITLE,
+            text: "今天下雨蓝，不适合睡觉"
+        })
+
+    }, 2000)
+</script>
